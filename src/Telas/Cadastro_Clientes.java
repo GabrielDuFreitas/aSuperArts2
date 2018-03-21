@@ -197,37 +197,36 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btn_cadastrar)
-                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel7)
-                        .addGroup(jPanel6Layout.createSequentialGroup()
+                    .addComponent(jLabel7)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txt_email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
+                                .addComponent(radio_fisico)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(radio_juridico))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_empresa, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(txt_cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(40, 40, 40)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txt_email, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel6Layout.createSequentialGroup()
-                                    .addComponent(radio_fisico)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(radio_juridico))
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(txt_empresa, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addGap(45, 45, 45)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel6)
-                                .addComponent(txt_cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel5)
-                                .addComponent(txt_cnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGap(40, 40, 40)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel10)
-                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txt_celular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                                    .addComponent(txt_telefone, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addComponent(jLabel8)
-                                .addComponent(txt_endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(txt_celular, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                                .addComponent(txt_telefone, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(jLabel8)
+                            .addComponent(txt_endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(315, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -289,6 +288,8 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        tb_cliente.setAutoCreateRowSorter(true);
+        tb_cliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tb_cliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -358,25 +359,25 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
         this.tb_cliente.getColumnModel().getColumn(0).setMaxWidth(50);
         this.tb_cliente.getColumnModel().getColumn(0).setMinWidth(50);
         
-        this.tb_cliente.getColumnModel().getColumn(1).setPreferredWidth(200);
-        this.tb_cliente.getColumnModel().getColumn(1).setMaxWidth(200);
-        this.tb_cliente.getColumnModel().getColumn(1).setMinWidth(200);
+        this.tb_cliente.getColumnModel().getColumn(1).setPreferredWidth(150);
+        this.tb_cliente.getColumnModel().getColumn(1).setMaxWidth(150);
+        this.tb_cliente.getColumnModel().getColumn(1).setMinWidth(150);
         
         this.tb_cliente.getColumnModel().getColumn(2).setPreferredWidth(70);
         this.tb_cliente.getColumnModel().getColumn(2).setMaxWidth(70);
         this.tb_cliente.getColumnModel().getColumn(2).setMinWidth(70);
         
-        this.tb_cliente.getColumnModel().getColumn(3).setPreferredWidth(200);
-        this.tb_cliente.getColumnModel().getColumn(3).setMaxWidth(200);
-        this.tb_cliente.getColumnModel().getColumn(3).setMinWidth(200);
+        this.tb_cliente.getColumnModel().getColumn(3).setPreferredWidth(150);
+        this.tb_cliente.getColumnModel().getColumn(3).setMaxWidth(150);
+        this.tb_cliente.getColumnModel().getColumn(3).setMinWidth(150);
         
-        this.tb_cliente.getColumnModel().getColumn(4).setPreferredWidth(100);
-        this.tb_cliente.getColumnModel().getColumn(4).setMaxWidth(100);
-        this.tb_cliente.getColumnModel().getColumn(4).setMinWidth(100);
+        this.tb_cliente.getColumnModel().getColumn(4).setPreferredWidth(150);
+        this.tb_cliente.getColumnModel().getColumn(4).setMaxWidth(150);
+        this.tb_cliente.getColumnModel().getColumn(4).setMinWidth(150);
         
-        this.tb_cliente.getColumnModel().getColumn(5).setPreferredWidth(100);
-        this.tb_cliente.getColumnModel().getColumn(5).setMaxWidth(100);
-        this.tb_cliente.getColumnModel().getColumn(5).setMinWidth(100);
+        this.tb_cliente.getColumnModel().getColumn(5).setPreferredWidth(150);
+        this.tb_cliente.getColumnModel().getColumn(5).setMaxWidth(150);
+        this.tb_cliente.getColumnModel().getColumn(5).setMinWidth(150);
         
         this.tb_cliente.getColumnModel().getColumn(6).setPreferredWidth(200);
         this.tb_cliente.getColumnModel().getColumn(6).setMaxWidth(200);
@@ -413,7 +414,7 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
             
             JOptionPane.showMessageDialog(null, "ok");
             Alterar_Clientes alterar_Clientes = new Alterar_Clientes();
-            alterar_Clientes.setSize(getWidth(), getHeight());
+            alterar_Clientes.setSize(700, 500);
             alterar_Clientes.setVisible(true);
         }
     }//GEN-LAST:event_tb_clienteMouseClicked
