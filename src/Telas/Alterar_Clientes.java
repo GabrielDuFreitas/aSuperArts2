@@ -341,14 +341,14 @@ public class Alterar_Clientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JRadioButton radio_fisico;
     private javax.swing.JRadioButton radio_juridico;
-    private javax.swing.JFormattedTextField txt_celular;
-    private javax.swing.JFormattedTextField txt_cnpj;
-    private javax.swing.JFormattedTextField txt_cpf;
-    private javax.swing.JTextField txt_email;
-    private javax.swing.JTextField txt_empresa;
-    private javax.swing.JTextField txt_endereco;
-    private javax.swing.JTextField txt_id;
-    private javax.swing.JTextField txt_nome;
-    private javax.swing.JFormattedTextField txt_telefone;
+    public static javax.swing.JFormattedTextField txt_celular;
+    public static javax.swing.JFormattedTextField txt_cnpj;
+    public static javax.swing.JFormattedTextField txt_cpf;
+    public static javax.swing.JTextField txt_email;
+    public static javax.swing.JTextField txt_empresa;
+    public static javax.swing.JTextField txt_endereco;
+    public static javax.swing.JTextField txt_id;
+    public static javax.swing.JTextField txt_nome;
+    public static javax.swing.JFormattedTextField txt_telefone;
     // End of variables declaration//GEN-END:variables
 }
