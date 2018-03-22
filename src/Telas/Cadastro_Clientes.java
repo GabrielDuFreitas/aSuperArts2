@@ -40,6 +40,7 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPopupMenu2 = new javax.swing.JPopupMenu();
         Excluir = new javax.swing.JMenuItem();
+        Editar = new javax.swing.JMenuItem();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -82,6 +83,14 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
             }
         });
         jPopupMenu2.add(Excluir);
+
+        Editar.setText("jMenuItem1");
+        Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarActionPerformed(evt);
+            }
+        });
+        jPopupMenu2.add(Editar);
 
         setClosable(true);
         setIconifiable(true);
@@ -483,9 +492,9 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
 
     private void tb_clienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clienteMouseReleased
         if(evt.isPopupTrigger()){
-            jPopupMenu2.show(this, evt.getX(), 100);
-            Excluir.setText("Excluir");
-            
+            jPopupMenu2.show(this, evt.getX(), 105);
+            Excluir.setText("Excluir Cliente");
+            Editar.setText("Editar Cliente");
             
         }
            
@@ -502,7 +511,7 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
             int linha = this.tb_cliente.getSelectedRow();
             c.setId_cliente((int) this.tb_cliente.getValueAt(linha, 0));
             int resposta = 0;
-            resposta = JOptionPane.showConfirmDialog(null, "deseja mesmo excluir?");
+            resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir?");
             if (resposta == JOptionPane.YES_OPTION) {
                 clienteBLL.ExcluirCliente(c);
                 preencherTabela();
@@ -512,6 +521,36 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Selecione uma linha!");
         }
     }//GEN-LAST:event_ExcluirActionPerformed
+
+    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
+        ClientesDTO clientesDTO = new ClientesDTO();
+        if (this.tb_cliente.getSelectedRowCount() > 0) {
+            int linha = tb_cliente.getSelectedRow();
+            clientesDTO.setId_cliente((int) this.tb_cliente.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo editar?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                
+                Alterar_Clientes alterar_Clientes = new Alterar_Clientes();
+                alterar_Clientes.setSize(700, 500);
+                alterar_Clientes.setVisible(true);
+                Alterar_Clientes.txt_id_cliente.setText(tb_cliente.getModel().getValueAt(linha, 0).toString());
+                Alterar_Clientes.txt_Nome.setText(tb_cliente.getModel().getValueAt(linha, 1).toString());
+                Alterar_Clientes.radio_fisico.setText(tb_cliente.getModel().getValueAt(linha, 2).toString());
+                Alterar_Clientes.txt_empresa.setText(tb_cliente.getModel().getValueAt(linha, 3).toString());
+                Alterar_Clientes.txt_cpf.setText(tb_cliente.getModel().getValueAt(linha, 4).toString());
+                Alterar_Clientes.txt_cnpj.setText(tb_cliente.getModel().getValueAt(linha, 5).toString());
+                Alterar_Clientes.txt_email.setText(tb_cliente.getModel().getValueAt(linha, 6).toString());
+                Alterar_Clientes.txt_endereco.setText(tb_cliente.getModel().getValueAt(linha, 7).toString());
+                Alterar_Clientes.txt_telefone.setText(tb_cliente.getModel().getValueAt(linha, 8).toString());
+                Alterar_Clientes.txt_celular.setText(tb_cliente.getModel().getValueAt(linha, 9).toString());
+            }
+            
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+
+             }  
+    }//GEN-LAST:event_EditarActionPerformed
     public void validarCampos(){
         if(txt_nome.getText().equals("")){
             txt_nome.grabFocus();
@@ -526,6 +565,7 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Editar;
     private javax.swing.JMenuItem Excluir;
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.ButtonGroup buttonGroup1;
