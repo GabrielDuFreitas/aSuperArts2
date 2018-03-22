@@ -81,7 +81,28 @@ public class ClientesBLL {
         } catch (SQLException ex) {
             Logger.getLogger(ClientesBLL.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+    }
+     
+      public void alterar(ClientesDTO c){
+        sql = "UPDATE tb_cliente SET nome=?,tipo=?,empresa=?,cpf=?,cnpj=?,email=?,endereco=?,telefone=?,celular=? WHERE id_cliente=?;";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, c.getNome());
+            ps.setString(2, c.getTipo());
+            ps.setString(3, c.getEmpresa());
+            ps.setString(4, c.getCpf());
+            ps.setString(5, c.getCnpj());
+            ps.setString(6, c.getEmail());
+            ps.setString(7, c.getEndereco());
+            ps.setString(8, c.getTelefone());
+            ps.setString(9, c.getCelular());
+            ps.setInt(10, c.getId_cliente());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesBLL.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

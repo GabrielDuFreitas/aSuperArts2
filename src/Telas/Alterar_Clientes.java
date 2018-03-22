@@ -7,7 +7,10 @@ package Telas;
 
 import BLL.ClientesBLL;
 import DTO.ClientesDTO;
+import static Telas.Cadastro_Clientes.tb_cliente;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -268,14 +271,81 @@ public class Alterar_Clientes extends javax.swing.JFrame {
             txt_empresa.setText("");
         }
     }//GEN-LAST:event_radio_juridicoActionPerformed
-
+    
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         ClientesBLL rg = new ClientesBLL();
         ClientesDTO clientesDTO = new ClientesDTO();
-
-   
+        if(!txt_Nome.getText().equals("")&&
+                !txt_empresa.getText().equals("")&&
+                !txt_endereco.getText().equals("")&&
+                !txt_email.getText().equals("")
+                ){
+            JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+            preencherTabela();
+            this.dispose();
+            
+        }else{
+        
+            JOptionPane.showMessageDialog(null, "Campos vazios!");
+                    
+        }
+        
     }//GEN-LAST:event_btn_cadastrarActionPerformed
-
+    public void preencherTabela(){
+        
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(0).setPreferredWidth(50);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(0).setMaxWidth(50);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(0).setMinWidth(50);
+        
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(1).setPreferredWidth(150);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(1).setMaxWidth(150);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(1).setMinWidth(150);
+        
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(2).setPreferredWidth(70);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(2).setMaxWidth(70);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(2).setMinWidth(70);
+        
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(3).setPreferredWidth(150);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(3).setMaxWidth(150);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(3).setMinWidth(150);
+        
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(4).setPreferredWidth(150);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(4).setMaxWidth(150);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(4).setMinWidth(150);
+        
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(5).setPreferredWidth(150);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(5).setMaxWidth(150);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(5).setMinWidth(150);
+        
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(6).setPreferredWidth(200);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(6).setMaxWidth(200);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(6).setMinWidth(200);
+        
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(7).setPreferredWidth(200);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(7).setMaxWidth(200);
+        Cadastro_Clientes.tb_cliente.getColumnModel().getColumn(7).setMinWidth(200);
+        
+        ClientesBLL rg = new ClientesBLL();
+        Cadastro_Clientes.tb_cliente.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        DefaultTableModel modelo = (DefaultTableModel) tb_cliente.getModel();
+        modelo.setNumRows(0);
+        
+        for(ClientesDTO cdto:rg.listarCliente()){
+         modelo.addRow(new Object[]{
+                cdto.getId_cliente(),
+                cdto.getNome(),
+                cdto.getTipo(),
+                cdto.getEmpresa(),
+                cdto.getCpf(),
+                cdto.getCnpj(),
+                cdto.getEmail(),
+                cdto.getEndereco(),
+                cdto.getTelefone(),
+                cdto.getCelular()
+            });
+        }
+    
+    }
     /**
      * @param args the command line arguments
      */

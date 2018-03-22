@@ -7,6 +7,7 @@ package Telas;
 
 import BLL.ClientesBLL;
 import DTO.ClientesDTO;
+import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -37,6 +38,8 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jPopupMenu2 = new javax.swing.JPopupMenu();
+        Excluir = new javax.swing.JMenuItem();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -66,7 +69,19 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_cliente = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+
+        Excluir.setText("jMenuItem2");
+        Excluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ExcluirMouseClicked(evt);
+            }
+        });
+        Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirActionPerformed(evt);
+            }
+        });
+        jPopupMenu2.add(Excluir);
 
         setClosable(true);
         setIconifiable(true);
@@ -299,6 +314,9 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_clienteMouseClicked(evt);
             }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tb_clienteMouseReleased(evt);
+            }
         });
         jScrollPane1.setViewportView(tb_cliente);
         if (tb_cliente.getColumnModel().getColumnCount() > 0) {
@@ -314,24 +332,15 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
             tb_cliente.getColumnModel().getColumn(9).setResizable(false);
         }
 
-        jButton3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton3.setText("Excluir");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 990, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jButton3)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 369, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
 
         jPanel5.add(jPanel1);
@@ -398,8 +407,14 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
     }
     private void tb_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clienteMouseClicked
        ClientesDTO clientesDTO = new ClientesDTO();
-        if (evt.getClickCount() == 2) {
-                int linha = 0;
+        if (evt.getClickCount() == 2) {             
+            if (this.tb_cliente.getSelectedRowCount() > 0) {
+            int linha = tb_cliente.getSelectedRow();
+            clientesDTO.setId_cliente((int) this.tb_cliente.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "deseja mesmo alterar?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                
                 Alterar_Clientes alterar_Clientes = new Alterar_Clientes();
                 alterar_Clientes.setSize(700, 500);
                 alterar_Clientes.setVisible(true);
@@ -413,24 +428,15 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
                 Alterar_Clientes.txt_endereco.setText(tb_cliente.getModel().getValueAt(linha, 7).toString());
                 Alterar_Clientes.txt_telefone.setText(tb_cliente.getModel().getValueAt(linha, 8).toString());
                 Alterar_Clientes.txt_celular.setText(tb_cliente.getModel().getValueAt(linha, 9).toString());
-                
-               
+            }
             
-            
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+
+             }  
         }
     }//GEN-LAST:event_tb_clienteMouseClicked
-    public void setandoCampos(){
-        int linha = tb_cliente.getSelectedRow();
-        Alterar_Clientes.txt_id_cliente.setText(tb_cliente.getModel().getValueAt(linha, 0).toString());
-        Alterar_Clientes.txt_Nome.setText(tb_cliente.getModel().getValueAt(linha, 1).toString());
-        Alterar_Clientes.txt_empresa.setText(tb_cliente.getModel().getValueAt(linha, 3).toString());
-        Alterar_Clientes.txt_cpf.setText(tb_cliente.getModel().getValueAt(linha, 4).toString());
-        Alterar_Clientes.txt_cnpj.setText(tb_cliente.getModel().getValueAt(linha, 5).toString());
-        Alterar_Clientes.txt_email.setText(tb_cliente.getModel().getValueAt(linha, 6).toString());
-        Alterar_Clientes.txt_endereco.setText(tb_cliente.getModel().getValueAt(linha, 7).toString());
-        Alterar_Clientes.txt_telefone.setText(tb_cliente.getModel().getValueAt(linha, 8).toString());
-        Alterar_Clientes.txt_celular.setText(tb_cliente.getModel().getValueAt(linha, 9).toString());
-    }
+
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         ClientesBLL rg = new ClientesBLL();
         ClientesDTO clientesDTO = new ClientesDTO();
@@ -454,6 +460,7 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
         }
         rg.inserir(clientesDTO);
         JOptionPane.showMessageDialog(null, "Cliente cadastrado");
+        preencherTabela();
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void radio_fisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_fisicoActionPerformed
@@ -473,6 +480,38 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
             txt_empresa.setText("");
         }
     }//GEN-LAST:event_radio_juridicoActionPerformed
+
+    private void tb_clienteMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clienteMouseReleased
+        if(evt.isPopupTrigger()){
+            jPopupMenu2.show(this, evt.getX(), 100);
+            Excluir.setText("Excluir");
+            
+            
+        }
+           
+    }//GEN-LAST:event_tb_clienteMouseReleased
+
+    private void ExcluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExcluirMouseClicked
+         
+    }//GEN-LAST:event_ExcluirMouseClicked
+
+    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
+        ClientesDTO c = new ClientesDTO();
+         ClientesBLL clienteBLL = new ClientesBLL();
+        if (this.tb_cliente.getSelectedRowCount() > 0) {
+            int linha = this.tb_cliente.getSelectedRow();
+            c.setId_cliente((int) this.tb_cliente.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "deseja mesmo excluir?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                clienteBLL.ExcluirCliente(c);
+                preencherTabela();
+                JOptionPane.showMessageDialog(null, "Excluído!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+        }
+    }//GEN-LAST:event_ExcluirActionPerformed
     public void validarCampos(){
         if(txt_nome.getText().equals("")){
             txt_nome.grabFocus();
@@ -487,9 +526,9 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Excluir;
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -504,11 +543,12 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPopupMenu jPopupMenu2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JRadioButton radio_fisico;
     private javax.swing.JRadioButton radio_juridico;
-    private javax.swing.JTable tb_cliente;
+    public static javax.swing.JTable tb_cliente;
     private javax.swing.JFormattedTextField txt_celular;
     private javax.swing.JFormattedTextField txt_cnpj;
     private javax.swing.JFormattedTextField txt_cpf;
