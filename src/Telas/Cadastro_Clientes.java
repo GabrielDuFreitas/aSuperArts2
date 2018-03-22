@@ -397,17 +397,40 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
         }
     }
     private void tb_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clienteMouseClicked
+       ClientesDTO clientesDTO = new ClientesDTO();
         if (evt.getClickCount() == 2) {
+                int linha = 0;
+                Alterar_Clientes alterar_Clientes = new Alterar_Clientes();
+                alterar_Clientes.setSize(700, 500);
+                alterar_Clientes.setVisible(true);
+                Alterar_Clientes.txt_id_cliente.setText(tb_cliente.getModel().getValueAt(linha, 0).toString());
+                Alterar_Clientes.txt_Nome.setText(tb_cliente.getModel().getValueAt(linha, 1).toString());
+                Alterar_Clientes.radio_fisico.setText(tb_cliente.getModel().getValueAt(linha, 2).toString());
+                Alterar_Clientes.txt_empresa.setText(tb_cliente.getModel().getValueAt(linha, 3).toString());
+                Alterar_Clientes.txt_cpf.setText(tb_cliente.getModel().getValueAt(linha, 4).toString());
+                Alterar_Clientes.txt_cnpj.setText(tb_cliente.getModel().getValueAt(linha, 5).toString());
+                Alterar_Clientes.txt_email.setText(tb_cliente.getModel().getValueAt(linha, 6).toString());
+                Alterar_Clientes.txt_endereco.setText(tb_cliente.getModel().getValueAt(linha, 7).toString());
+                Alterar_Clientes.txt_telefone.setText(tb_cliente.getModel().getValueAt(linha, 8).toString());
+                Alterar_Clientes.txt_celular.setText(tb_cliente.getModel().getValueAt(linha, 9).toString());
+                
+               
             
-            int linha = tb_cliente.getSelectedRow();
             
-            JOptionPane.showMessageDialog(null, "ok");
-            Alterar_Clientes alterar_Clientes = new Alterar_Clientes();
-            alterar_Clientes.setSize(700, 500);
-            alterar_Clientes.setVisible(true);
         }
     }//GEN-LAST:event_tb_clienteMouseClicked
-
+    public void setandoCampos(){
+        int linha = tb_cliente.getSelectedRow();
+        Alterar_Clientes.txt_id_cliente.setText(tb_cliente.getModel().getValueAt(linha, 0).toString());
+        Alterar_Clientes.txt_Nome.setText(tb_cliente.getModel().getValueAt(linha, 1).toString());
+        Alterar_Clientes.txt_empresa.setText(tb_cliente.getModel().getValueAt(linha, 3).toString());
+        Alterar_Clientes.txt_cpf.setText(tb_cliente.getModel().getValueAt(linha, 4).toString());
+        Alterar_Clientes.txt_cnpj.setText(tb_cliente.getModel().getValueAt(linha, 5).toString());
+        Alterar_Clientes.txt_email.setText(tb_cliente.getModel().getValueAt(linha, 6).toString());
+        Alterar_Clientes.txt_endereco.setText(tb_cliente.getModel().getValueAt(linha, 7).toString());
+        Alterar_Clientes.txt_telefone.setText(tb_cliente.getModel().getValueAt(linha, 8).toString());
+        Alterar_Clientes.txt_celular.setText(tb_cliente.getModel().getValueAt(linha, 9).toString());
+    }
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         ClientesBLL rg = new ClientesBLL();
         ClientesDTO clientesDTO = new ClientesDTO();

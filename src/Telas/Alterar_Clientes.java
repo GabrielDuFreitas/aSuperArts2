@@ -31,10 +31,11 @@ public class Alterar_Clientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
-        txt_id = new javax.swing.JTextField();
+        txt_id_cliente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        txt_nome = new javax.swing.JTextField();
+        txt_Nome = new javax.swing.JTextField();
         txt_cpf = new javax.swing.JFormattedTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -60,14 +61,14 @@ public class Alterar_Clientes extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Código");
 
-        txt_id.setEditable(false);
-        txt_id.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_id_cliente.setEditable(false);
+        txt_id_cliente.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Nome");
 
-        txt_nome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_nome.setToolTipText("Digite seu nome");
+        txt_Nome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_Nome.setToolTipText("Digite seu nome");
 
         try {
             txt_cpf.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###.###.###-##")));
@@ -118,6 +119,7 @@ public class Alterar_Clientes extends javax.swing.JFrame {
         jLabel3.setText("Tipo");
 
         radio_fisico.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(radio_fisico);
         radio_fisico.setText("Físico");
         radio_fisico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,6 +128,7 @@ public class Alterar_Clientes extends javax.swing.JFrame {
         });
 
         radio_juridico.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(radio_juridico);
         radio_juridico.setText("Júridico");
         radio_juridico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,8 +176,8 @@ public class Alterar_Clientes extends javax.swing.JFrame {
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txt_id, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_nome, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_id_cliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_Nome, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txt_empresa, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,13 +202,13 @@ public class Alterar_Clientes extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txt_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txt_id_cliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_Nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
@@ -270,26 +273,7 @@ public class Alterar_Clientes extends javax.swing.JFrame {
         ClientesBLL rg = new ClientesBLL();
         ClientesDTO clientesDTO = new ClientesDTO();
 
-        clientesDTO.setNome(txt_nome.getText());
-        clientesDTO.setCpf(txt_cpf.getText());
-        clientesDTO.setEndereco(txt_endereco.getText());
-        clientesDTO.setTelefone(txt_telefone.getText());
-        clientesDTO.setCelular(txt_celular.getText());
-        clientesDTO.setCnpj(txt_cnpj.getText());
-        clientesDTO.setEmpresa(txt_empresa.getText());
-        clientesDTO.setEmail(txt_email.getText());
-        if(radio_fisico.isSelected()){
-            clientesDTO.setTipo(radio_fisico.getActionCommand());
-            
-
-            //JOptionPane.showMessageDialog(null, radio_fisico.getActionCommand());
-        }else{
-            clientesDTO.setTipo(radio_juridico.getActionCommand());
-
-            //JOptionPane.showMessageDialog(null, radio_juridico.getActionCommand());
-        }
-        rg.inserir(clientesDTO);
-        JOptionPane.showMessageDialog(null, "Cliente cadastrado");
+   
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     /**
@@ -329,6 +313,7 @@ public class Alterar_Clientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_cadastrar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -339,16 +324,16 @@ public class Alterar_Clientes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton radio_fisico;
+    public static javax.swing.JRadioButton radio_fisico;
     private javax.swing.JRadioButton radio_juridico;
+    public static javax.swing.JTextField txt_Nome;
     public static javax.swing.JFormattedTextField txt_celular;
     public static javax.swing.JFormattedTextField txt_cnpj;
     public static javax.swing.JFormattedTextField txt_cpf;
     public static javax.swing.JTextField txt_email;
     public static javax.swing.JTextField txt_empresa;
     public static javax.swing.JTextField txt_endereco;
-    public static javax.swing.JTextField txt_id;
-    public static javax.swing.JTextField txt_nome;
+    public static javax.swing.JTextField txt_id_cliente;
     public static javax.swing.JFormattedTextField txt_telefone;
     // End of variables declaration//GEN-END:variables
 }
