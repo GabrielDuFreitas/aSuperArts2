@@ -19,6 +19,9 @@ public class Form_principal extends javax.swing.JFrame {
     /**
      * Creates new form Form_principal
      */
+    Cadastro_Clientes cadastro_Clientes = null;
+    Cadastro_Usuario cadastro_Usuario = null;
+    Cadastro_Materiais cadastro_Materiais = null;
     public Form_principal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
@@ -214,7 +217,8 @@ public class Form_principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        Cadastro_Clientes cadastro_Clientes = new Cadastro_Clientes();
+        fecharTelas();
+        cadastro_Clientes = new Cadastro_Clientes();
         cadastro_Clientes.setVisible(true);
         desktop.add(cadastro_Clientes);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
@@ -236,17 +240,32 @@ public class Form_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        Cadastro_Materiais cadastro_Materiais = new Cadastro_Materiais();
+        fecharTelas();
+        cadastro_Materiais = new Cadastro_Materiais();
         cadastro_Materiais.setVisible(true);
         desktop.add(cadastro_Materiais);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
-        Cadastro_Usuario cadastro_Usuario = new Cadastro_Usuario();
+        fecharTelas();
+        cadastro_Usuario = new Cadastro_Usuario();
         cadastro_Usuario.setSize(274, 339);
         cadastro_Usuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
-
+    public void fecharTelas(){
+    if(cadastro_Clientes != null){
+        cadastro_Clientes.setVisible(false);
+        cadastro_Clientes = null;
+    }
+    if(cadastro_Usuario != null){
+        cadastro_Usuario.setVisible(false);
+        cadastro_Usuario = null;
+    }
+    if(cadastro_Materiais != null){
+        cadastro_Materiais.setVisible(false);
+        cadastro_Materiais = null;
+    }
+    }
     /**
      * @param args the command line arguments
      */

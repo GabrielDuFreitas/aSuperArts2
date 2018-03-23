@@ -47,6 +47,7 @@ public class Cadastro_Usuario extends javax.swing.JFrame {
         Fundo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
