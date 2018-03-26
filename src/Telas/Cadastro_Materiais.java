@@ -5,6 +5,9 @@
  */
 package Telas;
 
+import java.text.DecimalFormat;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Administrador
@@ -49,7 +52,7 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
         txt_totalCm = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         txt_precoVenda = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_cadastrar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         txt_total = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
@@ -135,11 +138,6 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
 
         txt_totalCm.setEditable(false);
         txt_totalCm.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        txt_totalCm.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txt_totalCmKeyReleased(evt);
-            }
-        });
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Preço de Venda");
@@ -157,8 +155,13 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jButton1.setText("Cadastrar");
+        btn_cadastrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        btn_cadastrar.setText("Cadastrar");
+        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastrarActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setText("Total ");
@@ -178,6 +181,11 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
 
         txt_valorcm.setEditable(false);
         txt_valorcm.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_valorcm.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_valorcmActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -206,34 +214,33 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txt_valorcm, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12)))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel1)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(201, 201, 201)
-                            .addComponent(jLabel6))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(30, 30, 30)
-                            .addComponent(txt_cor, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(20, 20, 20)
-                            .addComponent(jLabel4)
-                            .addGap(45, 45, 45)
-                            .addComponent(jLabel5)
-                            .addGap(36, 36, 36)
-                            .addComponent(jLabel9))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(txt_espessura, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(txt_altura, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(txt_largura, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(txt_totalCm, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jButton1)))
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(201, 201, 201)
+                        .addComponent(jLabel6))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txt_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)
+                        .addComponent(txt_cor, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(20, 20, 20)
+                        .addComponent(jLabel4)
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel5)
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel9))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(txt_espessura, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_altura, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_largura, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_totalCm, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_cadastrar))
                 .addContainerGap(139, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -278,7 +285,7 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
                     .addComponent(txt_porcentagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_precoCompra, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
-                .addComponent(jButton1)
+                .addComponent(btn_cadastrar)
                 .addGap(3, 3, 3))
         );
 
@@ -313,7 +320,7 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
         Double valor_compra = Double.valueOf(txt_precoCompra.getText());
         Double porcentagem = Double.valueOf(txt_porcentagem.getText());
         txt_total.setText(String.valueOf(valor_compra * porcentagem).replace(",", "."));
-        
+              
         Double total = Double.valueOf(txt_total.getText());
         Double compra = Double.valueOf(txt_precoCompra.getText());
         txt_precoVenda.setText(String.valueOf(total + compra).replace(",", "."));
@@ -326,15 +333,16 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
     private void txt_porcentagemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_porcentagemKeyReleased
         Double valor_compra = Double.valueOf(txt_precoCompra.getText());
         Double porcentagem = Double.valueOf(txt_porcentagem.getText());
-        txt_total.setText(String.valueOf(valor_compra * porcentagem).replace(",", "."));
-        
+        txt_total.setText(String.valueOf(valor_compra * (porcentagem/100)).replace(",", "."));
+             
         Double total = Double.valueOf(txt_total.getText());
         Double compra = Double.valueOf(txt_precoCompra.getText());
         txt_precoVenda.setText(String.valueOf(total + compra).replace(",", "."));
         
         Double venda = Double.valueOf(txt_precoVenda.getText());
         Double totalcm = Double.valueOf(txt_totalCm.getText());
-        txt_valorcm.setText(String.valueOf(venda/totalcm));
+        DecimalFormat df = new DecimalFormat("0.####");
+        txt_valorcm.setText(String.valueOf(df.format(venda/totalcm)));
     }//GEN-LAST:event_txt_porcentagemKeyReleased
 
     private void txt_totalKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_totalKeyReleased
@@ -349,15 +357,17 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
     
     }//GEN-LAST:event_txt_precoVendaKeyPressed
 
-    private void txt_totalCmKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_totalCmKeyReleased
-        Double venda = Double.valueOf(txt_precoVenda.getText());
-        Double totalcm = Double.valueOf(txt_totalCm.getText());
-        txt_valorcm.setText(String.valueOf(venda/totalcm));
-    }//GEN-LAST:event_txt_totalCmKeyReleased
+    private void txt_valorcmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_valorcmActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_valorcmActionPerformed
+
+    private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cadastrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_cadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
