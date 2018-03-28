@@ -524,6 +524,7 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         ClientesDTO clientesDTO = new ClientesDTO();
+        ClientesBLL rg = new ClientesBLL();
         if (this.tb_cliente.getSelectedRowCount() > 0) {
             int linha = tb_cliente.getSelectedRow();
             clientesDTO.setId_cliente((int) this.tb_cliente.getValueAt(linha, 0));

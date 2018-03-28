@@ -22,6 +22,7 @@ public class Form_principal extends javax.swing.JFrame {
     Cadastro_Clientes cadastro_Clientes = null;
     Cadastro_Usuario cadastro_Usuario = null;
     Cadastro_Materiais cadastro_Materiais = null;
+    Cadastro_Servicos cadastro_Servicos = null;
     public Form_principal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
@@ -53,8 +54,8 @@ public class Form_principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         barra_menu = new javax.swing.JMenuBar();
         menu_arquivo = new javax.swing.JMenu();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        MenuItemSair = new javax.swing.JMenuItem();
+        MenuItemLogout = new javax.swing.JMenuItem();
         menu_admin = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -90,18 +91,23 @@ public class Form_principal extends javax.swing.JFrame {
         menu_arquivo.setText("Arquivo");
         menu_arquivo.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jMenuItem10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem10.setText("Sair");
-        menu_arquivo.add(jMenuItem10);
-
-        jMenuItem11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem11.setText("Logout");
-        jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+        MenuItemSair.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        MenuItemSair.setText("Sair");
+        MenuItemSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem11ActionPerformed(evt);
+                MenuItemSairActionPerformed(evt);
             }
         });
-        menu_arquivo.add(jMenuItem11);
+        menu_arquivo.add(MenuItemSair);
+
+        MenuItemLogout.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        MenuItemLogout.setText("Logout");
+        MenuItemLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuItemLogoutActionPerformed(evt);
+            }
+        });
+        menu_arquivo.add(MenuItemLogout);
 
         barra_menu.add(menu_arquivo);
 
@@ -127,6 +133,11 @@ public class Form_principal extends javax.swing.JFrame {
         jMenuItem3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/Imagens/icons8-suporte-24.png"))); // NOI18N
         jMenuItem3.setText("Serviços");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu3.add(jMenuItem3);
 
         jMenuItem4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -223,7 +234,7 @@ public class Form_principal extends javax.swing.JFrame {
         desktop.add(cadastro_Clientes);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+    private void MenuItemLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemLogoutActionPerformed
         Form_Login form_Login = new Form_Login();
         form_Login.setSize(416, 339);
         form_Login.setVisible(true);
@@ -231,7 +242,7 @@ public class Form_principal extends javax.swing.JFrame {
         menu_arquivo.setEnabled(false);
         menu_op.setEnabled(false);
         
-    }//GEN-LAST:event_jMenuItem11ActionPerformed
+    }//GEN-LAST:event_MenuItemLogoutActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
         Cadastro_Funcionarios cadastro_Funcionarios = new Cadastro_Funcionarios();
@@ -252,6 +263,17 @@ public class Form_principal extends javax.swing.JFrame {
         cadastro_Usuario.setSize(274, 339);
         cadastro_Usuario.setVisible(true);
     }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        fecharTelas();
+        cadastro_Servicos = new Cadastro_Servicos();
+        cadastro_Servicos.setVisible(true);
+        desktop.add(cadastro_Servicos);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void MenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSairActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_MenuItemSairActionPerformed
     public void fecharTelas(){
     if(cadastro_Clientes != null){
         cadastro_Clientes.setVisible(false);
@@ -264,6 +286,10 @@ public class Form_principal extends javax.swing.JFrame {
     if(cadastro_Materiais != null){
         cadastro_Materiais.setVisible(false);
         cadastro_Materiais = null;
+    }
+    if(cadastro_Servicos != null){
+        cadastro_Servicos.setVisible(false);
+        cadastro_Servicos = null;
     }
     }
     /**
@@ -302,14 +328,14 @@ public class Form_principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MenuItemLogout;
+    private javax.swing.JMenuItem MenuItemSair;
     private javax.swing.JMenuBar barra_menu;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;

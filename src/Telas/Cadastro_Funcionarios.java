@@ -7,7 +7,6 @@ package Telas;
 
 import BLL.FuncionariosBLL;
 import DTO.FuncionariosDTO;
-import static Telas.Cadastro_Clientes.tb_cliente;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -93,6 +92,9 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Popuptb_funcionario = new javax.swing.JPopupMenu();
+        Excluir = new javax.swing.JMenuItem();
+        Editar = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -119,6 +121,22 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_funcoionario = new javax.swing.JTable();
+
+        Excluir.setText("jMenuItem1");
+        Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirActionPerformed(evt);
+            }
+        });
+        Popuptb_funcionario.add(Excluir);
+
+        Editar.setText("jMenuItem1");
+        Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarActionPerformed(evt);
+            }
+        });
+        Popuptb_funcionario.add(Editar);
 
         setClosable(true);
         setIconifiable(true);
@@ -317,6 +335,9 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
             }
         });
         tb_funcoionario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_funcoionarioMouseClicked(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 tb_funcoionarioMouseReleased(evt);
             }
@@ -386,11 +407,56 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void tb_funcoionarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcoionarioMouseReleased
-        
+        if(evt.isPopupTrigger()){
+            Popuptb_funcionario.show(this, evt.getX(), 105);
+            Excluir.setText("Excluir Cliente");
+            Editar.setText("Editar Cliente");
+            
+        }
     }//GEN-LAST:event_tb_funcoionarioMouseReleased
 
+    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
+        FuncionariosBLL rg = new FuncionariosBLL();
+        FuncionariosDTO f = new FuncionariosDTO();
+        if (this.tb_funcoionario.getSelectedRowCount() > 0) {
+            int linha = this.tb_funcoionario.getSelectedRow();
+            f.setId_funcionario((int) this.tb_funcoionario.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                rg.ExcluirFuncionario(f);
+                preencherTabela();
+                JOptionPane.showMessageDialog(null, "Excluído!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+        }
+    }//GEN-LAST:event_ExcluirActionPerformed
+
+    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
+         FuncionariosDTO funcionariosDTO = new FuncionariosDTO();
+        FuncionariosBLL rg = new FuncionariosBLL();
+        if (this.tb_funcoionario.getSelectedRowCount() > 0) {
+            int linha = tb_funcoionario.getSelectedRow();
+            funcionariosDTO.setId_funcionario((int) this.tb_funcoionario.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo editar?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                
+         Alterar_Funcionarios alterar_Funcionarios = new Alterar_Funcionarios();
+         alterar_Funcionarios.setSize(700, 500);
+         alterar_Funcionarios.setVisible(true);
+    }//GEN-LAST:event_EditarActionPerformed
+   }  
+ }
+    private void tb_funcoionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcoionarioMouseClicked
+      
+    }//GEN-LAST:event_tb_funcoionarioMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Editar;
+    private javax.swing.JMenuItem Excluir;
+    private javax.swing.JPopupMenu Popuptb_funcionario;
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -407,15 +473,15 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable tb_funcoionario;
-    private javax.swing.JFormattedTextField txt_cep;
-    private javax.swing.JTextField txt_cidade;
-    private javax.swing.JTextField txt_cod;
-    private javax.swing.JFormattedTextField txt_cpf;
-    private javax.swing.JTextField txt_endereco;
-    private javax.swing.JTextField txt_identidade;
-    private javax.swing.JTextField txt_nome;
-    private javax.swing.JTextField txt_numero;
-    private javax.swing.JFormattedTextField txt_telefone;
-    private javax.swing.JComboBox<String> txt_uf;
+    public javax.swing.JFormattedTextField txt_cep;
+    public javax.swing.JTextField txt_cidade;
+    public javax.swing.JTextField txt_cod;
+    public javax.swing.JFormattedTextField txt_cpf;
+    public javax.swing.JTextField txt_endereco;
+    public javax.swing.JTextField txt_identidade;
+    public javax.swing.JTextField txt_nome;
+    public javax.swing.JTextField txt_numero;
+    public javax.swing.JFormattedTextField txt_telefone;
+    public javax.swing.JComboBox<String> txt_uf;
     // End of variables declaration//GEN-END:variables
 }

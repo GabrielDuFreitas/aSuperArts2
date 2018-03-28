@@ -247,7 +247,7 @@ public class Alterar_Clientes extends javax.swing.JFrame {
                 .addComponent(txt_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_cadastrar)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         setSize(new java.awt.Dimension(711, 454));
@@ -280,10 +280,26 @@ public class Alterar_Clientes extends javax.swing.JFrame {
                 !txt_endereco.getText().equals("")&&
                 !txt_email.getText().equals("")
                 ){
-            JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
-            preencherTabela();
-            this.dispose();
-            
+                int id = Integer.parseInt(txt_id_cliente.getText());
+                clientesDTO.setId_cliente(id);
+                clientesDTO.setNome(txt_Nome.getText());
+                clientesDTO.setCpf(txt_cpf.getText());
+                clientesDTO.setEndereco(txt_endereco.getText());
+                clientesDTO.setTelefone(txt_telefone.getText());
+                clientesDTO.setCelular(txt_celular.getText());
+                clientesDTO.setCnpj(txt_cnpj.getText());
+                clientesDTO.setEmpresa(txt_empresa.getText());
+                clientesDTO.setEmail(txt_email.getText());
+                
+                 if(radio_fisico.isSelected()){
+                    clientesDTO.setTipo(radio_fisico.getActionCommand());
+                    rg.alterar(clientesDTO);
+                    JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+                    preencherTabela();
+                    this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Selecione um tipo de pessoa!");
+                }  
         }else{
         
             JOptionPane.showMessageDialog(null, "Campos vazios!");

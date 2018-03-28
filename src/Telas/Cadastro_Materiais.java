@@ -5,8 +5,12 @@
  */
 package Telas;
 
+import BLL.MateriaisBLL;
+import DTO.MateriaisDTO;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -19,8 +23,70 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
      */
     public Cadastro_Materiais() {
         initComponents();
+        preencherTabela();
     }
-
+public void preencherTabela(){
+        
+        this.tb_material.getColumnModel().getColumn(0).setPreferredWidth(50);
+        this.tb_material.getColumnModel().getColumn(0).setMaxWidth(50);
+        this.tb_material.getColumnModel().getColumn(0).setMinWidth(50);
+        
+        this.tb_material.getColumnModel().getColumn(1).setPreferredWidth(350);
+        this.tb_material.getColumnModel().getColumn(1).setMaxWidth(350);
+        this.tb_material.getColumnModel().getColumn(1).setMinWidth(350);
+        
+        this.tb_material.getColumnModel().getColumn(2).setPreferredWidth(120);
+        this.tb_material.getColumnModel().getColumn(2).setMaxWidth(120);
+        this.tb_material.getColumnModel().getColumn(2).setMinWidth(120);
+        
+        this.tb_material.getColumnModel().getColumn(3).setPreferredWidth(180);
+        this.tb_material.getColumnModel().getColumn(3).setMaxWidth(180);
+        this.tb_material.getColumnModel().getColumn(3).setMinWidth(180);
+        
+        this.tb_material.getColumnModel().getColumn(4).setPreferredWidth(150);
+        this.tb_material.getColumnModel().getColumn(4).setMaxWidth(150);
+        this.tb_material.getColumnModel().getColumn(4).setMinWidth(150);
+        
+        this.tb_material.getColumnModel().getColumn(5).setPreferredWidth(150);
+        this.tb_material.getColumnModel().getColumn(5).setMaxWidth(150);
+        this.tb_material.getColumnModel().getColumn(5).setMinWidth(150);
+        
+        this.tb_material.getColumnModel().getColumn(6).setPreferredWidth(170);
+        this.tb_material.getColumnModel().getColumn(6).setMaxWidth(170);
+        this.tb_material.getColumnModel().getColumn(6).setMinWidth(170);
+        
+        this.tb_material.getColumnModel().getColumn(7).setPreferredWidth(80);
+        this.tb_material.getColumnModel().getColumn(7).setMaxWidth(80);
+        this.tb_material.getColumnModel().getColumn(7).setMinWidth(80);
+        
+        this.tb_material.getColumnModel().getColumn(8).setPreferredWidth(170);
+        this.tb_material.getColumnModel().getColumn(8).setMaxWidth(170);
+        this.tb_material.getColumnModel().getColumn(8).setMinWidth(170);
+        
+        this.tb_material.getColumnModel().getColumn(9).setPreferredWidth(200);
+        this.tb_material.getColumnModel().getColumn(9).setMaxWidth(200);
+        this.tb_material.getColumnModel().getColumn(9).setMinWidth(200);
+        
+        MateriaisBLL rg = new MateriaisBLL();
+        this.tb_material.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        DefaultTableModel modelo = (DefaultTableModel) tb_material.getModel();
+        modelo.setNumRows(0);
+        
+        for(MateriaisDTO mdto:rg.listarMaterial()){
+         modelo.addRow(new Object[]{
+                mdto.getId_material(),
+                mdto.getNome(),
+                mdto.getEspessura(),
+                mdto.getCor(),
+                mdto.getAltura(),
+                mdto.getLargura(),
+                mdto.getPrecocompra(),
+                mdto.getPorcentagem(),
+                mdto.getTotal(),
+                mdto.getPrecovenda()
+            });
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,6 +96,9 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        popupMaterial = new javax.swing.JPopupMenu();
+        Excluir = new javax.swing.JMenuItem();
+        Editar = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         txt_nome = new javax.swing.JTextField();
@@ -57,6 +126,25 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
         txt_total = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         txt_valorcm = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tb_material = new javax.swing.JTable();
+
+        Excluir.setText("jMenuItem1");
+        Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirActionPerformed(evt);
+            }
+        });
+        popupMaterial.add(Excluir);
+
+        Editar.setText("jMenuItem2");
+        Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarActionPerformed(evt);
+            }
+        });
+        popupMaterial.add(Editar);
 
         setClosable(true);
         setIconifiable(true);
@@ -291,6 +379,59 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
 
         jTabbedPane1.addTab("Cadastro", jPanel1);
 
+        tb_material.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Código", "Nome", "Espessura ", "Cor", "Altura", "Largura", "Preço Compra", "%", "Total", "Preço Venda"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tb_material.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_materialMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tb_materialMouseReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tb_material);
+        if (tb_material.getColumnModel().getColumnCount() > 0) {
+            tb_material.getColumnModel().getColumn(0).setResizable(false);
+            tb_material.getColumnModel().getColumn(1).setResizable(false);
+            tb_material.getColumnModel().getColumn(2).setResizable(false);
+            tb_material.getColumnModel().getColumn(3).setResizable(false);
+            tb_material.getColumnModel().getColumn(4).setResizable(false);
+            tb_material.getColumnModel().getColumn(5).setResizable(false);
+            tb_material.getColumnModel().getColumn(6).setResizable(false);
+            tb_material.getColumnModel().getColumn(7).setResizable(false);
+            tb_material.getColumnModel().getColumn(8).setResizable(false);
+            tb_material.getColumnModel().getColumn(9).setResizable(false);
+        }
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 274, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Editar", jPanel3);
+
         getContentPane().add(jTabbedPane1);
 
         pack();
@@ -360,13 +501,95 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
     private void txt_valorcmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_valorcmActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_valorcmActionPerformed
-
+    
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-        // TODO add your handling code here:
+        MateriaisBLL rg = new MateriaisBLL();
+        MateriaisDTO materiaisDTO = new MateriaisDTO();
+        
+        materiaisDTO.setNome(txt_nome.getText());
+        materiaisDTO.setEspessura(txt_espessura.getText());
+        materiaisDTO.setCor(txt_cor.getText());
+        materiaisDTO.setAltura(Double.parseDouble(txt_altura.getText().replace(",", ".")));
+        materiaisDTO.setLargura(Double.parseDouble(txt_largura.getText().replace(",", ".")));
+        materiaisDTO.setPrecocompra(Double.parseDouble(txt_precoCompra.getText().replace(",", ".")));
+        materiaisDTO.setPorcentagem(Integer.parseInt(txt_porcentagem.getText().replace(",", ".")));
+        materiaisDTO.setTotal(Double.parseDouble(txt_total.getText().replace(",", ".")));
+        materiaisDTO.setPrecovenda(Double.parseDouble(txt_precoVenda.getText().replace(",", ".")));
+        
+        rg.inserir(materiaisDTO);
+        JOptionPane.showMessageDialog(null, "Material cadastrado");
+        preencherTabela();
     }//GEN-LAST:event_btn_cadastrarActionPerformed
+
+    private void tb_materialMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_materialMouseReleased
+        if(evt.isPopupTrigger()){
+            popupMaterial.show(this, evt.getX(), 105);
+            Excluir.setText("Excluir Material");
+            Editar.setText("Editar Material");
+            
+        }
+    }//GEN-LAST:event_tb_materialMouseReleased
+
+    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
+        MateriaisBLL rg = new MateriaisBLL();
+        MateriaisDTO m = new MateriaisDTO();
+        if (this.tb_material.getSelectedRowCount() > 0) {
+            int linha = this.tb_material.getSelectedRow();
+            m.setId_material((int) this.tb_material.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                rg.ExcluirMaterial(m);
+                preencherTabela();
+                JOptionPane.showMessageDialog(null, "Excluído!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+        }
+    }//GEN-LAST:event_ExcluirActionPerformed
+
+    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
+                Alterar_Materiais alterar_Clientes = new Alterar_Materiais();
+                alterar_Clientes.setSize(700, 500);
+                alterar_Clientes.setVisible(true);
+              
+    }//GEN-LAST:event_EditarActionPerformed
+
+    private void tb_materialMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_materialMouseClicked
+        // TODO add your handling code here:
+        MateriaisDTO materiaisDTO = new MateriaisDTO();
+            if(this.tb_material.getSelectedRow() >0){
+                int linha = tb_material.getSelectedRow();
+                materiaisDTO.setId_material((int) this.tb_material.getValueAt(linha, 0));
+                int resposta = 0;
+                resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo Alterar?");
+                if(resposta == JOptionPane.YES_OPTION){
+                    Alterar_Materiais alterar_Materiais =new Alterar_Materiais();
+                    alterar_Materiais.setSize(700, 500);
+                    alterar_Materiais.setVisible(true);
+
+                    alterar_Materiais.txt_cod.setText(tb_material.getModel().getValueAt(linha, 0).toString()); 
+                    alterar_Materiais.txt_nome.setText(tb_material.getModel().getValueAt(linha, 1).toString());
+                    alterar_Materiais.txt_espessura.setText(tb_material.getModel().getValueAt(linha, 2).toString());
+                    alterar_Materiais.txt_cor.setText(tb_material.getModel().getValueAt(linha, 3).toString());
+                    alterar_Materiais.txt_altura.setText(tb_material.getModel().getValueAt(linha, 4).toString());
+                    alterar_Materiais.txt_largura.setText(tb_material.getModel().getValueAt(linha, 5).toString());
+                    alterar_Materiais.txt_precoCompra.setText(tb_material.getModel().getValueAt(linha, 6).toString());
+                    alterar_Materiais.txt_porcentagem.setText(tb_material.getModel().getValueAt(linha, 7).toString());
+                    alterar_Materiais.txt_total.setText(tb_material.getModel().getValueAt(linha, 8).toString());
+                    alterar_Materiais.txt_precoVenda.setText(tb_material.getModel().getValueAt(linha, 9).toString());
+                    //alterar_Materiais.txt_totalcm.setText(tb_material.getModel().getValueAt(linha, 0).toString());
+                    //alterar_Materiais.txt_valorcm.setText(tb_material.getModel().getValueAt(linha, 0).toString());
+                    
+                    
+               }
+            }
+    }//GEN-LAST:event_tb_materialMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem Editar;
+    private javax.swing.JMenuItem Excluir;
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -381,8 +604,12 @@ public class Cadastro_Materiais extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JPopupMenu popupMaterial;
+    private javax.swing.JTable tb_material;
     private javax.swing.JTextField txt_altura;
     private javax.swing.JTextField txt_cor;
     private javax.swing.JTextField txt_espessura;
