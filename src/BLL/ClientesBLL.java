@@ -104,24 +104,19 @@ public class ClientesBLL {
             Logger.getLogger(ClientesBLL.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public boolean verificaCPF(String cpf){
-        try {
-            boolean existe = true;
-            PreparedStatement ps = con.prepareStatement(sql);
-            sql = ("SELECT cpf FROM tb_cliente WHERE cpf LIKE ?;");
-            ps.setString(1, "%"+cpf+"%"); 
-            ResultSet rs = ps.executeQuery();
+    public boolean verificaCPF(String cpf) throws Exception{
+        boolean existe = true;
+            PreparedStatement psmt = con.prepareStatement("SELECT  cpf FROM tb_cliente WHERE cpf LIKE ?");
+            psmt.setString(1, "%"+cpf+"%"); 
+            ResultSet rs = psmt.executeQuery();
             while (rs.next()) {
                 if ((rs.getString("cpf") != null)){
-                    existe = false;
-                }else{
-                    existe = true;
+                existe = false;
+            }else{
+                existe = true; 
                 }            
             }
             return existe; 
-        } catch (SQLException ex) {
-            Logger.getLogger(Login_BLL.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return false;
     }
+
 }

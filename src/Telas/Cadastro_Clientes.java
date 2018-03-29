@@ -7,7 +7,9 @@ package Telas;
 
 import BLL.ClientesBLL;
 import DTO.ClientesDTO;
-import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -115,6 +117,11 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
 
         txt_nome.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txt_nome.setToolTipText("Digite seu nome");
+        txt_nome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_nomeKeyPressed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Tipo");
@@ -165,6 +172,11 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
 
         txt_email.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         txt_email.setToolTipText("Digite o E-mail");
+        txt_email.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_emailKeyPressed(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("Endereço");
@@ -362,40 +374,40 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
     public void preencherTabela(){
         
-        this.tb_cliente.getColumnModel().getColumn(0).setPreferredWidth(50);
-        this.tb_cliente.getColumnModel().getColumn(0).setMaxWidth(50);
-        this.tb_cliente.getColumnModel().getColumn(0).setMinWidth(50);
+        tb_cliente.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tb_cliente.getColumnModel().getColumn(0).setMaxWidth(50);
+        tb_cliente.getColumnModel().getColumn(0).setMinWidth(50);
         
-        this.tb_cliente.getColumnModel().getColumn(1).setPreferredWidth(150);
-        this.tb_cliente.getColumnModel().getColumn(1).setMaxWidth(150);
-        this.tb_cliente.getColumnModel().getColumn(1).setMinWidth(150);
+        tb_cliente.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tb_cliente.getColumnModel().getColumn(1).setMaxWidth(150);
+        tb_cliente.getColumnModel().getColumn(1).setMinWidth(150);
         
-        this.tb_cliente.getColumnModel().getColumn(2).setPreferredWidth(70);
-        this.tb_cliente.getColumnModel().getColumn(2).setMaxWidth(70);
-        this.tb_cliente.getColumnModel().getColumn(2).setMinWidth(70);
+        tb_cliente.getColumnModel().getColumn(2).setPreferredWidth(70);
+        tb_cliente.getColumnModel().getColumn(2).setMaxWidth(70);
+        tb_cliente.getColumnModel().getColumn(2).setMinWidth(70);
         
-        this.tb_cliente.getColumnModel().getColumn(3).setPreferredWidth(150);
-        this.tb_cliente.getColumnModel().getColumn(3).setMaxWidth(150);
-        this.tb_cliente.getColumnModel().getColumn(3).setMinWidth(150);
+        tb_cliente.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tb_cliente.getColumnModel().getColumn(3).setMaxWidth(150);
+        tb_cliente.getColumnModel().getColumn(3).setMinWidth(150);
         
-        this.tb_cliente.getColumnModel().getColumn(4).setPreferredWidth(150);
-        this.tb_cliente.getColumnModel().getColumn(4).setMaxWidth(150);
-        this.tb_cliente.getColumnModel().getColumn(4).setMinWidth(150);
+        tb_cliente.getColumnModel().getColumn(4).setPreferredWidth(150);
+        tb_cliente.getColumnModel().getColumn(4).setMaxWidth(150);
+        tb_cliente.getColumnModel().getColumn(4).setMinWidth(150);
         
-        this.tb_cliente.getColumnModel().getColumn(5).setPreferredWidth(150);
-        this.tb_cliente.getColumnModel().getColumn(5).setMaxWidth(150);
-        this.tb_cliente.getColumnModel().getColumn(5).setMinWidth(150);
+        tb_cliente.getColumnModel().getColumn(5).setPreferredWidth(150);
+        tb_cliente.getColumnModel().getColumn(5).setMaxWidth(150);
+        tb_cliente.getColumnModel().getColumn(5).setMinWidth(150);
         
-        this.tb_cliente.getColumnModel().getColumn(6).setPreferredWidth(200);
-        this.tb_cliente.getColumnModel().getColumn(6).setMaxWidth(200);
-        this.tb_cliente.getColumnModel().getColumn(6).setMinWidth(200);
+        tb_cliente.getColumnModel().getColumn(6).setPreferredWidth(200);
+        tb_cliente.getColumnModel().getColumn(6).setMaxWidth(200);
+        tb_cliente.getColumnModel().getColumn(6).setMinWidth(200);
         
-        this.tb_cliente.getColumnModel().getColumn(7).setPreferredWidth(200);
-        this.tb_cliente.getColumnModel().getColumn(7).setMaxWidth(200);
-        this.tb_cliente.getColumnModel().getColumn(7).setMinWidth(200);
+        tb_cliente.getColumnModel().getColumn(7).setPreferredWidth(200);
+        tb_cliente.getColumnModel().getColumn(7).setMaxWidth(200);
+        tb_cliente.getColumnModel().getColumn(7).setMinWidth(200);
         
         ClientesBLL rg = new ClientesBLL();
-        this.tb_cliente.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        tb_cliente.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         DefaultTableModel modelo = (DefaultTableModel) tb_cliente.getModel();
         modelo.setNumRows(0);
         
@@ -417,9 +429,9 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
     private void tb_clienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_clienteMouseClicked
        ClientesDTO clientesDTO = new ClientesDTO();
         if (evt.getClickCount() == 2) {             
-            if (this.tb_cliente.getSelectedRowCount() > 0) {
+            if (tb_cliente.getSelectedRowCount() > 0) {
             int linha = tb_cliente.getSelectedRow();
-            clientesDTO.setId_cliente((int) this.tb_cliente.getValueAt(linha, 0));
+            clientesDTO.setId_cliente((int) tb_cliente.getValueAt(linha, 0));
             int resposta = 0;
             resposta = JOptionPane.showConfirmDialog(null, "deseja mesmo alterar?");
             if (resposta == JOptionPane.YES_OPTION) {
@@ -449,7 +461,7 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         ClientesBLL rg = new ClientesBLL();
         ClientesDTO clientesDTO = new ClientesDTO();
-        
+        if(!txt_nome.getText().equals("") && !txt_email.getText().equals("")){
         clientesDTO.setNome(txt_nome.getText());
         clientesDTO.setCpf(txt_cpf.getText());
         clientesDTO.setEndereco(txt_endereco.getText());
@@ -461,22 +473,38 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
         if(radio_fisico.isSelected()){
             clientesDTO.setTipo(radio_fisico.getActionCommand());
             
-            //JOptionPane.showMessageDialog(null, radio_fisico.getActionCommand());
         }else{
             clientesDTO.setTipo(radio_juridico.getActionCommand());
             
-            //JOptionPane.showMessageDialog(null, radio_juridico.getActionCommand());
         }
         
-        if(!rg.verificaCPF(txt_cpf.getText())){
-            JOptionPane.showMessageDialog(null, "Cpf ja existe"+ txt_cpf.getText());
-        }else{
-            JOptionPane.showMessageDialog(null, "Cpf nao existe");
-            //rg.inserir(clientesDTO);
+        try {
+            if(!rg.verificaCPF(txt_cpf.getText())){
+                JOptionPane.showMessageDialog(null, "Cliente com CPF já cadastrado "+ txt_cpf.getText());
+            }else{
+                JOptionPane.showMessageDialog(null, "Cliente cadastrado com sucesso!");
+                rg.inserir(clientesDTO);
+                preencherTabela();
+                txt_nome.setText("");
+                txt_cpf.setText("");
+                txt_endereco.setText("");
+                txt_telefone.setText("");
+                txt_celular.setText("");
+                txt_empresa.setText("");
+                txt_cnpj.setText("");
+                txt_email.setText("");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Cadastro_Clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
-        /*
-        JOptionPane.showMessageDialog(null, "Cliente cadastrado");
-        preencherTabela();*/
+        }else{
+            txt_nome.grabFocus();
+            txt_nome.setBackground(Color.red);
+            txt_email.grabFocus();
+            txt_email.setBackground(Color.red); 
+            
+        }
+        
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void radio_fisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_fisicoActionPerformed
@@ -559,18 +587,19 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
 
              }  
     }//GEN-LAST:event_EditarActionPerformed
-    public void validarCampos(){
-        if(txt_nome.getText().equals("")){
-            txt_nome.grabFocus();
+
+    private void txt_emailKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_emailKeyPressed
+        if(evt.equals(evt)){
+            txt_email.setBackground(Color.WHITE);
         }
-        if(txt_cpf.getText().equals(" . . - ")){
-            txt_cpf.grabFocus();
-        }
-        if(txt_endereco.getText().equals("")){
-            txt_endereco.grabFocus();
-        }
-    
-    }
+    }//GEN-LAST:event_txt_emailKeyPressed
+
+    private void txt_nomeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nomeKeyPressed
+       if(evt.equals(evt)){
+           txt_nome.setBackground(Color.WHITE);
+       }
+    }//GEN-LAST:event_txt_nomeKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Editar;
