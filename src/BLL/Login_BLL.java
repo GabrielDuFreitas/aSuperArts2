@@ -25,12 +25,13 @@ public class Login_BLL {
     public void Inserir(Login_DTO log){
         sql = "INSERT INTO tb_usuario(nome,senha,nivel)VALUES(?,?,?);";
         try {
+            String nome = null;
+            ResultSet rs = null;
             PreparedStatement ps = con.prepareStatement(sql);
             ps.setString(1, log.getNome());
             ps.setString(2, log.getSenha());
             ps.setString(3, log.getNivel());
             ps.execute();
-            
         } catch (SQLException ex) {
             Logger.getLogger(Login_DTO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -57,4 +58,21 @@ public class Login_BLL {
         return tipo;
          
     }
+    
+  
+    public boolean verificaNome(String nome) throws Exception{
+        boolean existe = true;
+            PreparedStatement psmt = con.prepareStatement("SELECT  nome FROM tb_usuario WHERE nome LIKE ?;");
+            psmt.setString(1, nome); 
+            ResultSet rs = psmt.executeQuery();
+            while (rs.next()) {
+                if ((rs.getString("nome") != null)){
+                existe = false;
+            }else{
+                existe = true; 
+                }            
+            }
+            return existe; 
+    }
+
 }

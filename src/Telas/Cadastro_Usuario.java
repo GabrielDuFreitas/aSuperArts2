@@ -7,9 +7,11 @@ package Telas;
 
 import BLL.Login_BLL;
 import DTO.Login_DTO;
+import java.awt.HeadlessException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -111,19 +113,31 @@ public class Cadastro_Usuario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Login_BLL rg = new Login_BLL();
         Login_DTO login_DTO = new Login_DTO();
-        if(!txt_nome.getText().equals("") && !txt_senha.getPassword().equals("") && !"-".equals(txt_nivel.getSelectedItem())){
+        String senha = String.valueOf(txt_senha.getPassword());
+        if(!txt_nome.getText().equals("") && !senha.equals("") && !"-".equals(txt_nivel.getSelectedItem())){
             try {
                 
                 login_DTO.setNome(txt_nome.getText());
                 login_DTO.setSenha(convertPasswordToMD5(txt_senha.getPassword()));
                 
                 login_DTO.setNivel(txt_nivel.getSelectedItem().toString().replace("Administrador", "1").replace("Operador", "2"));
-                rg.Inserir(login_DTO);
-     
-                txt_nome.setText("");
-                txt_senha.setText("");
-                txt_nivel.setSelectedItem("-");
-                JOptionPane.showMessageDialog(null, "Usuário cadastrado");
+                      
+                try {
+                    if(!rg.verificaNome(txt_nome.getText())){
+                        JOptionPane.showMessageDialog(null, "Já existe usuário "+ txt_nome.getText());
+                    }else{
+                        rg.Inserir(login_DTO); 
+                        JOptionPane.showMessageDialog(null, "Cadastrado com sucesso!"+ txt_senha.getPassword());
+                        txt_nome.setText("");
+                        txt_senha.setText("");
+                        txt_nivel.setSelectedItem("-");
+                         
+                    }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Cadastro_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (Exception ex) {
+                    Logger.getLogger(Cadastro_Usuario.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 //JOptionPane.showMessageDialog(null, txt_nome.getText()+" "+ txt_senha.getPassword()+" "+txt_nivel.getSelectedItem());
             } catch (NoSuchAlgorithmException ex) {
                 Logger.getLogger(Cadastro_Usuario.class.getName()).log(Level.SEVERE, null, ex);

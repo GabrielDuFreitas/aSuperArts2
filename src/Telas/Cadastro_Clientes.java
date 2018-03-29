@@ -467,9 +467,16 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
             
             //JOptionPane.showMessageDialog(null, radio_juridico.getActionCommand());
         }
-        rg.inserir(clientesDTO);
+        
+        if(!rg.verificaCPF(txt_cpf.getText())){
+            JOptionPane.showMessageDialog(null, "Cpf ja existe"+ txt_cpf.getText());
+        }else{
+            JOptionPane.showMessageDialog(null, "Cpf nao existe");
+            //rg.inserir(clientesDTO);
+        }
+        /*
         JOptionPane.showMessageDialog(null, "Cliente cadastrado");
-        preencherTabela();
+        preencherTabela();*/
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void radio_fisicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_fisicoActionPerformed
