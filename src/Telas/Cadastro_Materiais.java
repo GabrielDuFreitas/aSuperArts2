@@ -549,9 +549,34 @@ public void preencherTabela(){
     }//GEN-LAST:event_ExcluirActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-                Alterar_Materiais alterar_Clientes = new Alterar_Materiais();
-                alterar_Clientes.setSize(700, 500);
-                alterar_Clientes.setVisible(true);
+        MateriaisDTO materiaisDTO = new MateriaisDTO();
+        MateriaisBLL rg = new MateriaisBLL();
+        if (this.tb_material.getSelectedRowCount() > 0) {
+            int linha = tb_material.getSelectedRow();
+            materiaisDTO.setId_material((int) this.tb_material.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo editar?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                
+                     Alterar_Materiais alterar_Materiais =new Alterar_Materiais();
+                    alterar_Materiais.setSize(700, 500);
+                    alterar_Materiais.setVisible(true);
+                    alterar_Materiais.txt_cod.setText(tb_material.getModel().getValueAt(linha, 0).toString()); 
+                    alterar_Materiais.txt_nome.setText(tb_material.getModel().getValueAt(linha, 1).toString());
+                    alterar_Materiais.txt_espessura.setText(tb_material.getModel().getValueAt(linha, 2).toString());
+                    alterar_Materiais.txt_cor.setText(tb_material.getModel().getValueAt(linha, 3).toString());
+                    alterar_Materiais.txt_altura.setText(tb_material.getModel().getValueAt(linha, 4).toString());
+                    alterar_Materiais.txt_largura.setText(tb_material.getModel().getValueAt(linha, 5).toString());
+                    alterar_Materiais.txt_precoCompra.setText(tb_material.getModel().getValueAt(linha, 6).toString());
+                    alterar_Materiais.txt_porcentagem.setText(tb_material.getModel().getValueAt(linha, 7).toString());
+                    alterar_Materiais.txt_total.setText(tb_material.getModel().getValueAt(linha, 8).toString());
+                    alterar_Materiais.txt_precoVenda.setText(tb_material.getModel().getValueAt(linha, 9).toString());
+            }
+            
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+
+             }
               
     }//GEN-LAST:event_EditarActionPerformed
 
@@ -564,10 +589,10 @@ public void preencherTabela(){
                 int resposta = 0;
                 resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo Alterar?");
                 if(resposta == JOptionPane.YES_OPTION){
+                    
                     Alterar_Materiais alterar_Materiais =new Alterar_Materiais();
                     alterar_Materiais.setSize(700, 500);
                     alterar_Materiais.setVisible(true);
-
                     alterar_Materiais.txt_cod.setText(tb_material.getModel().getValueAt(linha, 0).toString()); 
                     alterar_Materiais.txt_nome.setText(tb_material.getModel().getValueAt(linha, 1).toString());
                     alterar_Materiais.txt_espessura.setText(tb_material.getModel().getValueAt(linha, 2).toString());
@@ -578,8 +603,6 @@ public void preencherTabela(){
                     alterar_Materiais.txt_porcentagem.setText(tb_material.getModel().getValueAt(linha, 7).toString());
                     alterar_Materiais.txt_total.setText(tb_material.getModel().getValueAt(linha, 8).toString());
                     alterar_Materiais.txt_precoVenda.setText(tb_material.getModel().getValueAt(linha, 9).toString());
-                    //alterar_Materiais.txt_totalcm.setText(tb_material.getModel().getValueAt(linha, 0).toString());
-                    //alterar_Materiais.txt_valorcm.setText(tb_material.getModel().getValueAt(linha, 0).toString());
                     
                     
                }

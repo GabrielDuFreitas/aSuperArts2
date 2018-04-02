@@ -9,6 +9,8 @@ import BLL.ServicosBLL;
 import DTO.MateriaisDTO;
 import DTO.ServicosDTO;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +23,40 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
      */
     public Cadastro_Servicos() {
         initComponents();
+        getRootPane().setDefaultButton(btn_cadastrar);
+        preencherTabela();
+    }
+     public void preencherTabela(){
+        
+        tb_servico.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tb_servico.getColumnModel().getColumn(0).setMaxWidth(50);
+        tb_servico.getColumnModel().getColumn(0).setMinWidth(50);
+        
+        tb_servico.getColumnModel().getColumn(1).setPreferredWidth(150);
+        tb_servico.getColumnModel().getColumn(1).setMaxWidth(150);
+        tb_servico.getColumnModel().getColumn(1).setMinWidth(150);
+        
+        tb_servico.getColumnModel().getColumn(2).setPreferredWidth(150);
+        tb_servico.getColumnModel().getColumn(2).setMaxWidth(150);
+        tb_servico.getColumnModel().getColumn(2).setMinWidth(150);
+        
+        tb_servico.getColumnModel().getColumn(3).setPreferredWidth(150);
+        tb_servico.getColumnModel().getColumn(3).setMaxWidth(150);
+        tb_servico.getColumnModel().getColumn(3).setMinWidth(150);
+        
+        ServicosBLL rg = new ServicosBLL();
+        tb_servico.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        DefaultTableModel modelo = (DefaultTableModel) tb_servico.getModel();
+        modelo.setNumRows(0);
+        
+        for(ServicosDTO sdto:rg.listarServico()){
+         modelo.addRow(new Object[]{
+                sdto.getId_servico(),
+                sdto.getNome(),
+                sdto.getQuantidade(),
+                sdto.getValor()
+            });
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -31,6 +67,9 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        PopupMenuServico = new javax.swing.JPopupMenu();
+        Excluir = new javax.swing.JMenuItem();
+        Editar = new javax.swing.JMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -41,12 +80,34 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
         txt_qntd = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txt_valor = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btn_cadastrar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tb_servico = new javax.swing.JTable();
+
+        Excluir.setText("jMenuItem1");
+        Excluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExcluirActionPerformed(evt);
+            }
+        });
+        PopupMenuServico.add(Excluir);
+
+        Editar.setText("jMenuItem1");
+        Editar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarActionPerformed(evt);
+            }
+        });
+        PopupMenuServico.add(Editar);
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
 
         jLabel1.setText("Código");
+
+        txt_cod.setEnabled(false);
 
         jLabel2.setText("Serviço");
 
@@ -56,7 +117,12 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Valor");
 
-        jButton1.setText("Cadastrar");
+        btn_cadastrar.setText("Cadastrar");
+        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -76,7 +142,7 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
                 .addGap(0, 809, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(btn_cadastrar)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -99,13 +165,13 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(btn_cadastrar)
                 .addContainerGap(176, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Cadastar", jPanel1);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tb_servico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -121,12 +187,20 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
+        tb_servico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tb_servicoMouseClicked(evt);
+            }
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tb_servicoMouseReleased(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tb_servico);
+        if (tb_servico.getColumnModel().getColumnCount() > 0) {
+            tb_servico.getColumnModel().getColumn(0).setResizable(false);
+            tb_servico.getColumnModel().getColumn(1).setResizable(false);
+            tb_servico.getColumnModel().getColumn(2).setResizable(false);
+            tb_servico.getColumnModel().getColumn(3).setResizable(false);
         }
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -165,9 +239,104 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
+        ServicosBLL rg = new ServicosBLL();
+        ServicosDTO servicosDTO = new ServicosDTO();
+        if(!txt_servico.getSelectedItem().equals("-") && !txt_qntd.getText().equals("") && !txt_valor.getText().equals("")){
+            
+        servicosDTO.setNome(txt_servico.getSelectedItem().toString());
+        servicosDTO.setQuantidade(Integer.parseInt(txt_qntd.getText()));
+        servicosDTO.setValor(Double.parseDouble(txt_valor.getText().replace(",", ".")));
+        rg.inserir(servicosDTO);
+        preencherTabela();
+        }
+                
+    }//GEN-LAST:event_btn_cadastrarActionPerformed
+
+    private void tb_servicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_servicoMouseClicked
+        ServicosDTO servicosDTO = new ServicosDTO();
+        if (evt.getClickCount() == 2) {             
+            if (tb_servico.getSelectedRowCount() > 0) {
+            int linha = tb_servico.getSelectedRow();
+            servicosDTO.setId_servico((int) tb_servico.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "deseja mesmo alterar?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                
+               Alterar_Servico alterar_Servico = new Alterar_Servico();
+               alterar_Servico.setSize(700, 500);
+               alterar_Servico.setVisible(true);
+               Alterar_Servico.txt_cod.setText(tb_servico.getModel().getValueAt(linha, 0).toString());
+               Alterar_Servico.txt_servico.setSelectedItem(tb_servico.getModel().getValueAt(linha, 1).toString());
+               Alterar_Servico.txt_quantd.setText(tb_servico.getModel().getValueAt(linha, 2).toString());
+               Alterar_Servico.txt_valor.setText(tb_servico.getModel().getValueAt(linha, 3).toString());
+
+            }
+            
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+
+             }  
+        }
+    }//GEN-LAST:event_tb_servicoMouseClicked
+
+    private void tb_servicoMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_servicoMouseReleased
+       if(evt.isPopupTrigger()){
+            PopupMenuServico.show(this, evt.getX(), 105);
+            Excluir.setText("Excluir Serviço");
+            Editar.setText("Editar Serviço");
+            
+        }
+    }//GEN-LAST:event_tb_servicoMouseReleased
+
+    private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
+         ServicosDTO s = new ServicosDTO();
+         ServicosBLL servicosBLL = new ServicosBLL();
+        if (this.tb_servico.getSelectedRowCount() > 0) {
+            int linha = this.tb_servico.getSelectedRow();
+            s.setId_servico((int) this.tb_servico.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo excluir?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                servicosBLL.ExcluirServico(s);
+                preencherTabela();
+                JOptionPane.showMessageDialog(null, "Excluído!");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+        }  
+    }//GEN-LAST:event_ExcluirActionPerformed
+
+    private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
+        ServicosDTO servicosDTO = new ServicosDTO();
+        ServicosBLL rg = new ServicosBLL();
+        if (this.tb_servico.getSelectedRowCount() > 0) {
+            int linha = tb_servico.getSelectedRow();
+            servicosDTO.setId_servico((int) this.tb_servico.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "Deseja mesmo editar?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                
+                Alterar_Servico alterar_Servico = new Alterar_Servico();
+                alterar_Servico.setSize(700, 500);
+                alterar_Servico.setVisible(true);
+               Alterar_Servico.txt_cod.setText(tb_servico.getModel().getValueAt(linha, 0).toString());
+               Alterar_Servico.txt_servico.setSelectedItem(tb_servico.getModel().getValueAt(linha, 1).toString());
+               Alterar_Servico.txt_quantd.setText(tb_servico.getModel().getValueAt(linha, 2).toString());
+               Alterar_Servico.txt_valor.setText(tb_servico.getModel().getValueAt(linha, 3).toString());
+            }
+            
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+
+             }
+    }//GEN-LAST:event_EditarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JMenuItem Editar;
+    private javax.swing.JMenuItem Excluir;
+    private javax.swing.JPopupMenu PopupMenuServico;
+    private javax.swing.JButton btn_cadastrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -176,7 +345,7 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    public static javax.swing.JTable tb_servico;
     private javax.swing.JTextField txt_cod;
     private javax.swing.JTextField txt_qntd;
     private javax.swing.JComboBox<String> txt_servico;

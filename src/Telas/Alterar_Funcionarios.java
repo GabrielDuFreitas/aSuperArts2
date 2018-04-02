@@ -17,7 +17,6 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
     public Alterar_Funcionarios() {
         initComponents();
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -95,6 +94,11 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
         }
 
         btn_cadastar.setText("Alterar");
+        btn_cadastar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -189,9 +193,13 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btn_cadastarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_cadastarActionPerformed
+
     /**
      * @param args the command line arguments
-     */
+     */  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -236,15 +244,16 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JFormattedTextField txt_cep;
-    public javax.swing.JTextField txt_cidade;
-    public javax.swing.JTextField txt_cod;
-    public javax.swing.JFormattedTextField txt_cpf;
-    public javax.swing.JTextField txt_endereco;
-    public javax.swing.JTextField txt_identidade;
-    public javax.swing.JTextField txt_nome;
-    public javax.swing.JTextField txt_numero;
-    public javax.swing.JFormattedTextField txt_telefone;
-    public javax.swing.JComboBox<String> txt_uf;
+    public static javax.swing.JFormattedTextField txt_cep;
+    public static javax.swing.JTextField txt_cidade;
+    public static javax.swing.JTextField txt_cod;
+    public static javax.swing.JFormattedTextField txt_cpf;
+    public static javax.swing.JTextField txt_endereco;
+    public static javax.swing.JTextField txt_identidade;
+    public static javax.swing.JTextField txt_nome;
+    public static javax.swing.JTextField txt_numero;
+    public static javax.swing.JFormattedTextField txt_telefone;
+    public static javax.swing.JComboBox<String> txt_uf;
     // End of variables declaration//GEN-END:variables
+
 }

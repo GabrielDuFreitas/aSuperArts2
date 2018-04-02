@@ -5,8 +5,10 @@
  */
 package Telas;
 
+import BLL.MateriaisBLL;
+import DTO.MateriaisDTO;
 import java.text.DecimalFormat;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author Administrador
@@ -19,7 +21,7 @@ public class Alterar_Materiais extends javax.swing.JFrame {
     public Alterar_Materiais() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -228,7 +230,37 @@ public class Alterar_Materiais extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-        // TODO add your handling code here:
+        MateriaisBLL rg = new MateriaisBLL();
+        MateriaisDTO materiaisDTO = new MateriaisDTO();
+        if(!txt_nome.getText().equals("")&&
+                !txt_espessura.getText().equals("")&&
+                !txt_cor.getText().equals("") &&
+                !txt_altura.getText().equals("") &&
+                !txt_largura.getText().equals("") &&
+                !txt_precoCompra.getText().equals("") &&
+                !txt_porcentagem.getText().equals("") &&
+                !txt_total.getText().equals("") &&
+                !txt_precoVenda.getText().equals("")
+                ){
+                int id = Integer.parseInt(txt_cod.getText());
+                materiaisDTO.setId_material(id);
+                materiaisDTO.setNome(txt_nome.getText());
+                materiaisDTO.setEspessura(txt_espessura.getText());
+                materiaisDTO.setCor(txt_cor.getText());
+                materiaisDTO.setAltura(Double.parseDouble(txt_altura.getText().replace(",", ".")));
+                materiaisDTO.setLargura(Double.parseDouble(txt_largura.getText().replace(",", ".")));
+                materiaisDTO.setPrecocompra(Double.parseDouble(txt_precoCompra.getText().replace(",", ".")));
+                materiaisDTO.setPorcentagem(Integer.parseInt(txt_porcentagem.getText().replace(",", ".")));
+                materiaisDTO.setTotal(Double.parseDouble(txt_total.getText().replace(",", ".")));
+                materiaisDTO.setPrecovenda(Double.parseDouble(txt_precoVenda.getText().replace(",", ".")));
+     
+                    rg.alterar(materiaisDTO);
+                    JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+                   // preencherTabela();
+                    this.dispose();          
+        }else{       
+            JOptionPane.showMessageDialog(null, "Campos vazios!");                
+        }
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void txt_alturaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_alturaKeyReleased
@@ -331,7 +363,7 @@ public class Alterar_Materiais extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     public javax.swing.JTextField txt_altura;
-    public javax.swing.JTextField txt_cod;
+    public static javax.swing.JTextField txt_cod;
     public javax.swing.JTextField txt_cor;
     public javax.swing.JTextField txt_espessura;
     public javax.swing.JTextField txt_largura;

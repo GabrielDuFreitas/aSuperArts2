@@ -64,4 +64,19 @@ public class ServicosBLL {
             Logger.getLogger(ClientesBLL.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+      public void alterar(ServicosDTO s){
+        sql = "UPDATE tb_servico SET nome=?,quantidade=?,valor=? WHERE id_servico=?;";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, s.getNome());
+            ps.setInt(2, s.getQuantidade());
+            ps.setDouble(3, s.getValor());
+            ps.setInt(4, s.getId_servico());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ClientesBLL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

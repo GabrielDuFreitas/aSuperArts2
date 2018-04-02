@@ -446,11 +446,50 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
          Alterar_Funcionarios alterar_Funcionarios = new Alterar_Funcionarios();
          alterar_Funcionarios.setSize(700, 500);
          alterar_Funcionarios.setVisible(true);
+         Alterar_Funcionarios.txt_cod.setText(tb_funcoionario.getModel().getValueAt(linha, 0).toString());
+         Alterar_Funcionarios.txt_nome.setText(tb_funcoionario.getModel().getValueAt(linha, 1).toString());
+         Alterar_Funcionarios.txt_cpf.setText(tb_funcoionario.getModel().getValueAt(linha, 2).toString());
+         Alterar_Funcionarios.txt_identidade.setText(tb_funcoionario.getModel().getValueAt(linha, 3).toString());
+         Alterar_Funcionarios.txt_endereco.setText(tb_funcoionario.getModel().getValueAt(linha, 4).toString());
+         Alterar_Funcionarios.txt_cep.setText(tb_funcoionario.getModel().getValueAt(linha, 5).toString());
+         Alterar_Funcionarios.txt_numero.setText(tb_funcoionario.getModel().getValueAt(linha, 6).toString());
+         Alterar_Funcionarios.txt_cidade.setText(tb_funcoionario.getModel().getValueAt(linha, 7).toString());
+         Alterar_Funcionarios.txt_uf.setSelectedItem(tb_funcoionario.getModel().getValueAt(linha, 8).toString());
+         Alterar_Funcionarios.txt_telefone.setText(tb_funcoionario.getModel().getValueAt(linha, 9).toString());
+                 
     }//GEN-LAST:event_EditarActionPerformed
    }  
  }
     private void tb_funcoionarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcoionarioMouseClicked
-      
+      FuncionariosDTO funcionariosDTO = new FuncionariosDTO();
+        if (evt.getClickCount() == 2) {             
+            if (tb_funcoionario.getSelectedRowCount() > 0) {
+            int linha = tb_funcoionario.getSelectedRow();
+            funcionariosDTO.setId_funcionario((int) tb_funcoionario.getValueAt(linha, 0));
+            int resposta = 0;
+            resposta = JOptionPane.showConfirmDialog(null, "deseja mesmo alterar?");
+            if (resposta == JOptionPane.YES_OPTION) {
+                
+         Alterar_Funcionarios alterar_Funcionarios = new Alterar_Funcionarios();
+         alterar_Funcionarios.setSize(700, 500);
+         alterar_Funcionarios.setVisible(true);
+         Alterar_Funcionarios.txt_cod.setText(tb_funcoionario.getModel().getValueAt(linha, 0).toString());
+         Alterar_Funcionarios.txt_nome.setText(tb_funcoionario.getModel().getValueAt(linha, 1).toString());
+         Alterar_Funcionarios.txt_cpf.setText(tb_funcoionario.getModel().getValueAt(linha, 2).toString());
+         Alterar_Funcionarios.txt_identidade.setText(tb_funcoionario.getModel().getValueAt(linha, 3).toString());
+         Alterar_Funcionarios.txt_endereco.setText(tb_funcoionario.getModel().getValueAt(linha, 4).toString());
+         Alterar_Funcionarios.txt_cep.setText(tb_funcoionario.getModel().getValueAt(linha, 5).toString());
+         Alterar_Funcionarios.txt_numero.setText(tb_funcoionario.getModel().getValueAt(linha, 6).toString());
+         Alterar_Funcionarios.txt_cidade.setText(tb_funcoionario.getModel().getValueAt(linha, 7).toString());
+         Alterar_Funcionarios.txt_uf.setSelectedItem(tb_funcoionario.getModel().getValueAt(linha, 8).toString());
+         Alterar_Funcionarios.txt_telefone.setText(tb_funcoionario.getModel().getValueAt(linha, 9).toString());
+            }
+            
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecione uma linha!");
+
+             }  
+        }
     }//GEN-LAST:event_tb_funcoionarioMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -472,7 +511,7 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tb_funcoionario;
+    public static javax.swing.JTable tb_funcoionario;
     public javax.swing.JFormattedTextField txt_cep;
     public javax.swing.JTextField txt_cidade;
     public javax.swing.JTextField txt_cod;

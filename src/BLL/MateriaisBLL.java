@@ -81,4 +81,25 @@ public class MateriaisBLL {
             Logger.getLogger(MateriaisBLL.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+       public void alterar(MateriaisDTO m){
+        sql = "UPDATE tb_materiais SET nome=?,espessura=?,cor=?,altura=?,largura=?,compra=?,porcentagem=?,total=?,venda=? WHERE id_material=?;";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            
+            ps.setString(1, m.getNome());
+            ps.setString(2, m.getEspessura());
+            ps.setString(3, m.getCor());
+            ps.setDouble(4, m.getAltura());
+            ps.setDouble(5, m.getLargura());
+            ps.setDouble(6, m.getPrecocompra());
+            ps.setInt(7, m.getPorcentagem());
+            ps.setDouble(8, m.getTotal());
+            ps.setDouble(9, m.getPrecovenda());
+            ps.setInt(10, m.getId_material());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(MateriaisBLL.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
