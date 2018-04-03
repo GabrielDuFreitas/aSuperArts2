@@ -23,6 +23,7 @@ public class Form_principal extends javax.swing.JFrame {
     Cadastro_Usuario cadastro_Usuario = null;
     Cadastro_Materiais cadastro_Materiais = null;
     Cadastro_Servicos cadastro_Servicos = null;
+    Cadastro_Produtos cadastro_Produtos = null;
     public Form_principal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
@@ -62,6 +63,7 @@ public class Form_principal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
@@ -159,6 +161,14 @@ public class Form_principal extends javax.swing.JFrame {
             }
         });
         jMenu3.add(jMenuItem5);
+
+        jMenuItem2.setText("Produtos");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jMenuItem2);
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/Imagens/icons8-usuário-de-gênero-neutro-24.png"))); // NOI18N
         jMenu1.setText("Usuários");
@@ -274,6 +284,13 @@ public class Form_principal extends javax.swing.JFrame {
     private void MenuItemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuItemSairActionPerformed
         System.exit(0);
     }//GEN-LAST:event_MenuItemSairActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        fecharTelas();
+        cadastro_Produtos = new Cadastro_Produtos();
+        cadastro_Produtos.setVisible(true);
+        desktop.add(cadastro_Produtos);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     public void fecharTelas(){
     if(cadastro_Clientes != null){
         cadastro_Clientes.setVisible(false);
@@ -290,6 +307,10 @@ public class Form_principal extends javax.swing.JFrame {
     if(cadastro_Servicos != null){
         cadastro_Servicos.setVisible(false);
         cadastro_Servicos = null;
+    }
+    if(cadastro_Produtos != null){
+        cadastro_Produtos.setVisible(false);
+        cadastro_Produtos = null;
     }
     }
     /**
@@ -337,6 +358,7 @@ public class Form_principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem12;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;

@@ -62,6 +62,18 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
         this.tb_funcoionario.getColumnModel().getColumn(8).setMaxWidth(150);
         this.tb_funcoionario.getColumnModel().getColumn(8).setMinWidth(150);
         
+        this.tb_funcoionario.getColumnModel().getColumn(9).setPreferredWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(9).setMaxWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(9).setMinWidth(150);
+        
+        this.tb_funcoionario.getColumnModel().getColumn(10).setPreferredWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(10).setMaxWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(10).setMinWidth(150);
+        
+        this.tb_funcoionario.getColumnModel().getColumn(11).setPreferredWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(11).setMaxWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(11).setMinWidth(150);
+        
         FuncionariosBLL rg = new FuncionariosBLL();
         this.tb_funcoionario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         DefaultTableModel modelo = (DefaultTableModel) tb_funcoionario.getModel();
