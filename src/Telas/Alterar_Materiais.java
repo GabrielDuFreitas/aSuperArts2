@@ -9,6 +9,8 @@ import BLL.MateriaisBLL;
 import DTO.MateriaisDTO;
 import java.text.DecimalFormat;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Administrador
@@ -21,7 +23,68 @@ public class Alterar_Materiais extends javax.swing.JFrame {
     public Alterar_Materiais() {
         initComponents();
     }
-    
+    public void preencherTabela(){
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(0).setPreferredWidth(50);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(0).setMaxWidth(50);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(0).setMinWidth(50);
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(1).setPreferredWidth(350);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(1).setMaxWidth(350);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(1).setMinWidth(350);
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(2).setPreferredWidth(120);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(2).setMaxWidth(120);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(2).setMinWidth(120);
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(3).setPreferredWidth(180);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(3).setMaxWidth(180);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(3).setMinWidth(180);
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(4).setPreferredWidth(150);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(4).setMaxWidth(150);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(4).setMinWidth(150);
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(5).setPreferredWidth(150);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(5).setMaxWidth(150);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(5).setMinWidth(150);
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(6).setPreferredWidth(170);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(6).setMaxWidth(170);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(6).setMinWidth(170);
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(7).setPreferredWidth(80);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(7).setMaxWidth(80);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(7).setMinWidth(80);
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(8).setPreferredWidth(170);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(8).setMaxWidth(170);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(8).setMinWidth(170);
+        
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(9).setPreferredWidth(200);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(9).setMaxWidth(200);
+        Cadastro_Materiais.tb_material.getColumnModel().getColumn(9).setMinWidth(200);
+        
+        MateriaisBLL rg = new MateriaisBLL();
+        Cadastro_Materiais.tb_material.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        DefaultTableModel modelo = (DefaultTableModel) Cadastro_Materiais.tb_material.getModel();
+        modelo.setNumRows(0);
+        
+        for(MateriaisDTO mdto:rg.listarMaterial()){
+         modelo.addRow(new Object[]{
+                mdto.getId_material(),
+                mdto.getNome(),
+                mdto.getEspessura(),
+                mdto.getCor(),
+                mdto.getAltura(),
+                mdto.getLargura(),
+                mdto.getPrecocompra(),
+                mdto.getPorcentagem(),
+                mdto.getTotal(),
+                mdto.getPrecovenda()
+            });
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -379,6 +379,7 @@ public void preencherTabela(){
 
         jTabbedPane1.addTab("Cadastro", jPanel1);
 
+        tb_material.setAutoCreateRowSorter(true);
         tb_material.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -395,6 +396,7 @@ public void preencherTabela(){
                 return canEdit [columnIndex];
             }
         });
+        tb_material.getTableHeader().setReorderingAllowed(false);
         tb_material.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_materialMouseClicked(evt);
@@ -426,8 +428,8 @@ public void preencherTabela(){
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 274, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Editar", jPanel3);
@@ -632,7 +634,7 @@ public void preencherTabela(){
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPopupMenu popupMaterial;
-    private javax.swing.JTable tb_material;
+    public static javax.swing.JTable tb_material;
     private javax.swing.JTextField txt_altura;
     private javax.swing.JTextField txt_cor;
     private javax.swing.JTextField txt_espessura;
