@@ -401,9 +401,6 @@ public void preencherTabela(){
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tb_materialMouseClicked(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                tb_materialMouseReleased(evt);
-            }
         });
         jScrollPane1.setViewportView(tb_material);
         if (tb_material.getColumnModel().getColumnCount() > 0) {
@@ -521,16 +518,16 @@ public void preencherTabela(){
         rg.inserir(materiaisDTO);
         JOptionPane.showMessageDialog(null, "Material cadastrado");
         preencherTabela();
+        txt_nome.setText("");
+        txt_espessura.setText("");
+        txt_cor.setText("");
+        txt_altura.setText("");
+        txt_largura.setText("");
+        txt_precoCompra.setText("");
+        txt_porcentagem.setText("");
+        txt_total.setText("");
+        txt_precoVenda.setText("");
     }//GEN-LAST:event_btn_cadastrarActionPerformed
-
-    private void tb_materialMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_materialMouseReleased
-        if(evt.isPopupTrigger()){
-            popupMaterial.show(this, evt.getX(), 105);
-            Excluir.setText("Excluir Material");
-            Editar.setText("Editar Material");
-            
-        }
-    }//GEN-LAST:event_tb_materialMouseReleased
 
     private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
         MateriaisBLL rg = new MateriaisBLL();

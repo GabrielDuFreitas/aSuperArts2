@@ -28,9 +28,9 @@ public class ProdutosBLL {
             ps.setString(2, p.getCor());
             ps.setInt(3, p.getQuantidade());
             ps.setString(4, p.getEspessura());
-            ps.setDouble(5, p.getAltura());
-            ps.setDouble(6, p.getLargura());
-            ps.setDouble(7, p.getComprimento());
+            ps.setString(5, p.getAltura());
+            ps.setString(6, p.getLargura());
+            ps.setString(7, p.getComprimento());
             ps.setDouble(8, p.getValor());
             ps.execute();
         } catch (SQLException ex) {
@@ -52,9 +52,9 @@ public class ProdutosBLL {
                 p.setCor(rs.getString("cor"));
                 p.setQuantidade(rs.getInt("quantidade"));
                 p.setEspessura(rs.getString("espessura"));
-                p.setAltura(rs.getDouble("altura"));
-                p.setLargura(rs.getDouble("largura"));
-                p.setComprimento(rs.getDouble("comprimento"));
+                p.setAltura(rs.getString("altura"));
+                p.setLargura(rs.getString("largura"));
+                p.setComprimento(rs.getString("comprimento"));
                 p.setValor(rs.getDouble("valor"));          
                 produtos.add(p);
             }
@@ -75,7 +75,7 @@ public class ProdutosBLL {
         }
     }
      public void alterar(ProdutosDTO p){
-        sql = "UPDATE tb_produtos SET nome=?,cor=?,quantidade=?,espessura=?,altura=?,largura=?,comprimento=?,valor=? WHERE id_produtos=?;";
+        sql = "UPDATE tb_produtos SET nome_produtos=?,cor=?,quantidade=?,espessura=?,altura=?,largura=?,comprimento=?,valor=? WHERE id_produtos=?;";
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
@@ -84,9 +84,9 @@ public class ProdutosBLL {
             ps.setString(2, p.getCor());
             ps.setInt(3, p.getQuantidade());
             ps.setString(4, p.getEspessura());
-            ps.setDouble(5, p.getAltura());
-            ps.setDouble(6, p.getLargura());
-            ps.setDouble(7, p.getComprimento());
+            ps.setString(5, p.getAltura());
+            ps.setString(6, p.getLargura());
+            ps.setString(7, p.getComprimento());
             ps.setDouble(8, p.getValor());
             ps.setInt(9, p.getId_produto());
             ps.executeUpdate();

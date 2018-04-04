@@ -216,8 +216,8 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(353, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Editar", jPanel2);
@@ -249,6 +249,9 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
         servicosDTO.setValor(Double.parseDouble(txt_valor.getText().replace(",", ".")));
         rg.inserir(servicosDTO);
         preencherTabela();
+        txt_servico.setSelectedItem("-");
+        txt_qntd.setText("");
+        txt_valor.setText("");
         }
                 
     }//GEN-LAST:event_btn_cadastrarActionPerformed

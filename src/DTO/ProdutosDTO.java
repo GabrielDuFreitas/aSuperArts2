@@ -9,9 +9,9 @@ public class ProdutosDTO {
     private String cor;
     private Integer quantidade;
     private String espessura;
-    private Double altura;
-    private Double largura;
-    private Double comprimento;
+    private String altura;
+    private String largura;
+    private String comprimento;
     private Double valor;
 
     public Integer getId_produto() {
@@ -54,27 +54,27 @@ public class ProdutosDTO {
         this.espessura = espessura;
     }
 
-    public Double getAltura() {
+    public String getAltura() {
         return altura;
     }
 
-    public void setAltura(Double altura) {
+    public void setAltura(String altura) {
         this.altura = altura;
     }
 
-    public Double getLargura() {
+    public String getLargura() {
         return largura;
     }
 
-    public void setLargura(Double largura) {
+    public void setLargura(String largura) {
         this.largura = largura;
     }
 
-    public Double getComprimento() {
+    public String getComprimento() {
         return comprimento;
     }
 
-    public void setComprimento(Double comprimento) {
+    public void setComprimento(String comprimento) {
         this.comprimento = comprimento;
     }
 
@@ -86,5 +86,5 @@ public class ProdutosDTO {
         this.valor = valor;
     }
     
-       
+    
 }

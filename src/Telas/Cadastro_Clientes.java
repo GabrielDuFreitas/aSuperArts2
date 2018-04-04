@@ -461,7 +461,7 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
         ClientesBLL rg = new ClientesBLL();
         ClientesDTO clientesDTO = new ClientesDTO();
-        if(!txt_nome.getText().equals("") && !txt_email.getText().equals("")){
+        if(!txt_nome.getText().equals("") && !txt_email.getText().equals("") && !txt_celular.getText().equals("")){
         clientesDTO.setNome(txt_nome.getText());
         clientesDTO.setCpf(txt_cpf.getText());
         clientesDTO.setEndereco(txt_endereco.getText());

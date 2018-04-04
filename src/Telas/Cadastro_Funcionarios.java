@@ -30,49 +30,41 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
         this.tb_funcoionario.getColumnModel().getColumn(0).setMaxWidth(50);
         this.tb_funcoionario.getColumnModel().getColumn(0).setMinWidth(50);
         
-        this.tb_funcoionario.getColumnModel().getColumn(1).setPreferredWidth(200);
-        this.tb_funcoionario.getColumnModel().getColumn(1).setMaxWidth(200);
-        this.tb_funcoionario.getColumnModel().getColumn(1).setMinWidth(200);
+        this.tb_funcoionario.getColumnModel().getColumn(1).setPreferredWidth(300);
+        this.tb_funcoionario.getColumnModel().getColumn(1).setMaxWidth(300);
+        this.tb_funcoionario.getColumnModel().getColumn(1).setMinWidth(300);
         
-        this.tb_funcoionario.getColumnModel().getColumn(2).setPreferredWidth(70);
-        this.tb_funcoionario.getColumnModel().getColumn(2).setMaxWidth(70);
-        this.tb_funcoionario.getColumnModel().getColumn(2).setMinWidth(70);
+        this.tb_funcoionario.getColumnModel().getColumn(2).setPreferredWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(2).setMaxWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(2).setMinWidth(150);
         
-        this.tb_funcoionario.getColumnModel().getColumn(3).setPreferredWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(3).setMaxWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(3).setMinWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(3).setPreferredWidth(120);
+        this.tb_funcoionario.getColumnModel().getColumn(3).setMaxWidth(120);
+        this.tb_funcoionario.getColumnModel().getColumn(3).setMinWidth(120);
         
-        this.tb_funcoionario.getColumnModel().getColumn(4).setPreferredWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(4).setMaxWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(4).setMinWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(4).setPreferredWidth(200);
+        this.tb_funcoionario.getColumnModel().getColumn(4).setMaxWidth(200);
+        this.tb_funcoionario.getColumnModel().getColumn(4).setMinWidth(200);
         
-        this.tb_funcoionario.getColumnModel().getColumn(5).setPreferredWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(5).setMaxWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(5).setMinWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(5).setPreferredWidth(100);
+        this.tb_funcoionario.getColumnModel().getColumn(5).setMaxWidth(100);
+        this.tb_funcoionario.getColumnModel().getColumn(5).setMinWidth(100);
         
-        this.tb_funcoionario.getColumnModel().getColumn(6).setPreferredWidth(200);
-        this.tb_funcoionario.getColumnModel().getColumn(6).setMaxWidth(200);
-        this.tb_funcoionario.getColumnModel().getColumn(6).setMinWidth(200);
+        this.tb_funcoionario.getColumnModel().getColumn(6).setPreferredWidth(100);
+        this.tb_funcoionario.getColumnModel().getColumn(6).setMaxWidth(100);
+        this.tb_funcoionario.getColumnModel().getColumn(6).setMinWidth(100);
         
-        this.tb_funcoionario.getColumnModel().getColumn(7).setPreferredWidth(200);
-        this.tb_funcoionario.getColumnModel().getColumn(7).setMaxWidth(200);
-        this.tb_funcoionario.getColumnModel().getColumn(7).setMinWidth(200);
+        this.tb_funcoionario.getColumnModel().getColumn(7).setPreferredWidth(100);
+        this.tb_funcoionario.getColumnModel().getColumn(7).setMaxWidth(100);
+        this.tb_funcoionario.getColumnModel().getColumn(7).setMinWidth(100);
         
-        this.tb_funcoionario.getColumnModel().getColumn(8).setPreferredWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(8).setMaxWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(8).setMinWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(8).setPreferredWidth(50);
+        this.tb_funcoionario.getColumnModel().getColumn(8).setMaxWidth(50);
+        this.tb_funcoionario.getColumnModel().getColumn(8).setMinWidth(50);
         
-        this.tb_funcoionario.getColumnModel().getColumn(9).setPreferredWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(9).setMaxWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(9).setMinWidth(150);
-        
-        this.tb_funcoionario.getColumnModel().getColumn(10).setPreferredWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(10).setMaxWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(10).setMinWidth(150);
-        
-        this.tb_funcoionario.getColumnModel().getColumn(11).setPreferredWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(11).setMaxWidth(150);
-        this.tb_funcoionario.getColumnModel().getColumn(11).setMinWidth(150);
+        this.tb_funcoionario.getColumnModel().getColumn(9).setPreferredWidth(100);
+        this.tb_funcoionario.getColumnModel().getColumn(9).setMaxWidth(100);
+        this.tb_funcoionario.getColumnModel().getColumn(9).setMinWidth(100);
         
         FuncionariosBLL rg = new FuncionariosBLL();
         this.tb_funcoionario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -416,6 +408,15 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
         rg.inserir(funcionariosDTO);
         JOptionPane.showMessageDialog(null, "Funcionário Cadastrado" );
         preencherTabela();
+        txt_nome.setText("");
+        txt_cpf.setText("");
+        txt_identidade.setText("");
+        txt_endereco.setText("");
+        txt_cep.setText("");
+        txt_numero.setText("");
+        txt_cidade.setText("");
+        txt_uf.setSelectedItem("-");
+        txt_telefone.setText("");       
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void tb_funcoionarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcoionarioMouseReleased

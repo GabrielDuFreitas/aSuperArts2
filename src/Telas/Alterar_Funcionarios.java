@@ -1,9 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Telas;
+
+import BLL.FuncionariosBLL;
+import DTO.FuncionariosDTO;
+import static Telas.Cadastro_Funcionarios.tb_funcoionario;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,6 +19,68 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
      */
     public Alterar_Funcionarios() {
         initComponents();
+    }
+    public void preencherTabela(){
+        
+        tb_funcoionario.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tb_funcoionario.getColumnModel().getColumn(0).setMaxWidth(50);
+        tb_funcoionario.getColumnModel().getColumn(0).setMinWidth(50);
+       
+        tb_funcoionario.getColumnModel().getColumn(1).setPreferredWidth(300);
+        tb_funcoionario.getColumnModel().getColumn(1).setMaxWidth(300);
+        tb_funcoionario.getColumnModel().getColumn(1).setMinWidth(300);
+        
+        tb_funcoionario.getColumnModel().getColumn(2).setPreferredWidth(150);
+        tb_funcoionario.getColumnModel().getColumn(2).setMaxWidth(150);
+        tb_funcoionario.getColumnModel().getColumn(2).setMinWidth(150);
+        
+        tb_funcoionario.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tb_funcoionario.getColumnModel().getColumn(3).setMaxWidth(120);
+        tb_funcoionario.getColumnModel().getColumn(3).setMinWidth(120);
+       
+        tb_funcoionario.getColumnModel().getColumn(4).setPreferredWidth(200);
+        tb_funcoionario.getColumnModel().getColumn(4).setMaxWidth(200);
+        tb_funcoionario.getColumnModel().getColumn(4).setMinWidth(200);
+        
+        tb_funcoionario.getColumnModel().getColumn(5).setPreferredWidth(100);
+        tb_funcoionario.getColumnModel().getColumn(5).setMaxWidth(100);
+        tb_funcoionario.getColumnModel().getColumn(5).setMinWidth(100);
+        
+        tb_funcoionario.getColumnModel().getColumn(6).setPreferredWidth(100);
+        tb_funcoionario.getColumnModel().getColumn(6).setMaxWidth(100);
+        tb_funcoionario.getColumnModel().getColumn(6).setMinWidth(100);
+        
+        tb_funcoionario.getColumnModel().getColumn(7).setPreferredWidth(100);
+        tb_funcoionario.getColumnModel().getColumn(7).setMaxWidth(100);
+        tb_funcoionario.getColumnModel().getColumn(7).setMinWidth(100);
+        
+        tb_funcoionario.getColumnModel().getColumn(8).setPreferredWidth(50);
+        tb_funcoionario.getColumnModel().getColumn(8).setMaxWidth(50);
+        tb_funcoionario.getColumnModel().getColumn(8).setMinWidth(50);
+        
+        tb_funcoionario.getColumnModel().getColumn(9).setPreferredWidth(100);
+        tb_funcoionario.getColumnModel().getColumn(9).setMaxWidth(100);
+        tb_funcoionario.getColumnModel().getColumn(9).setMinWidth(100);
+        
+        FuncionariosBLL rg = new FuncionariosBLL();
+        tb_funcoionario.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        DefaultTableModel modelo = (DefaultTableModel) tb_funcoionario.getModel();
+        modelo.setNumRows(0);
+        
+        for(FuncionariosDTO fdto:rg.listarFuncionario()){
+         modelo.addRow(new Object[]{
+                fdto.getId_funcionario(),
+                fdto.getNome(),
+                fdto.getCpf(),
+                fdto.getIdentidade(),
+                fdto.getEndereco(),
+                fdto.getCep(),
+                fdto.getNumero(),
+                fdto.getCidade(),
+                fdto.getUf(),
+                fdto.getTelefone()
+            });
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -194,7 +259,34 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cadastarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastarActionPerformed
-        // TODO add your handling code here:
+        FuncionariosBLL rg = new FuncionariosBLL();
+        FuncionariosDTO funcionariosDTO = new FuncionariosDTO();
+        if(!txt_nome.getText().equals("")&&
+            !txt_cpf.getText().equals("")&&
+            !txt_endereco.getText().equals("") &&
+            !txt_cep.getText().equals("") &&
+            !txt_cidade.getText().equals("") &&
+            !txt_uf.getSelectedItem().equals("-") &&
+            !txt_telefone.getText().equals("")
+                ){
+                funcionariosDTO.setId_funcionario(Integer.parseInt(txt_cod.getText()));
+                funcionariosDTO.setNome(txt_nome.getText());
+                funcionariosDTO.setCpf(txt_cpf.getText());
+                funcionariosDTO.setIdentidade(txt_identidade.getText());
+                funcionariosDTO.setEndereco(txt_endereco.getText());
+                funcionariosDTO.setCep(txt_cep.getText());
+                funcionariosDTO.setNumero(Integer.parseInt(txt_numero.getText()));
+                funcionariosDTO.setCidade(txt_cidade.getText());
+                funcionariosDTO.setUf(txt_uf.getSelectedItem().toString());
+                funcionariosDTO.setTelefone(txt_telefone.getText());
+     
+                rg.alterar(funcionariosDTO);
+                JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
+                preencherTabela();
+                this.dispose();          
+        }else{       
+            JOptionPane.showMessageDialog(null, "Campos vazios!");                
+        }
     }//GEN-LAST:event_btn_cadastarActionPerformed
 
     /**

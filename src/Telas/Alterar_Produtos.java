@@ -7,6 +7,7 @@ package Telas;
 
 import BLL.ProdutosBLL;
 import DTO.ProdutosDTO;
+import static Telas.Cadastro_Produtos.tb_produtos;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
@@ -22,6 +23,63 @@ public class Alterar_Produtos extends javax.swing.JFrame {
      */
     public Alterar_Produtos() {
         initComponents();
+    }
+    public void preencherTabela(){
+        
+        tb_produtos.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tb_produtos.getColumnModel().getColumn(0).setMaxWidth(50);
+        tb_produtos.getColumnModel().getColumn(0).setMinWidth(50);
+        
+        tb_produtos.getColumnModel().getColumn(1).setPreferredWidth(300);
+        tb_produtos.getColumnModel().getColumn(1).setMaxWidth(300);
+        tb_produtos.getColumnModel().getColumn(1).setMinWidth(300);
+        
+        tb_produtos.getColumnModel().getColumn(2).setPreferredWidth(200);
+        tb_produtos.getColumnModel().getColumn(2).setMaxWidth(200);
+        tb_produtos.getColumnModel().getColumn(2).setMinWidth(200);
+        
+        tb_produtos.getColumnModel().getColumn(3).setPreferredWidth(120);
+        tb_produtos.getColumnModel().getColumn(3).setMaxWidth(120);
+        tb_produtos.getColumnModel().getColumn(3).setMinWidth(120);
+        
+        tb_produtos.getColumnModel().getColumn(4).setPreferredWidth(120);
+        tb_produtos.getColumnModel().getColumn(4).setMaxWidth(120);
+        tb_produtos.getColumnModel().getColumn(4).setMinWidth(120);
+        
+        tb_produtos.getColumnModel().getColumn(5).setPreferredWidth(120);
+        tb_produtos.getColumnModel().getColumn(5).setMaxWidth(120);
+        tb_produtos.getColumnModel().getColumn(5).setMinWidth(120);
+        
+        tb_produtos.getColumnModel().getColumn(6).setPreferredWidth(120);
+        tb_produtos.getColumnModel().getColumn(6).setMaxWidth(120);
+        tb_produtos.getColumnModel().getColumn(6).setMinWidth(120);
+        
+        tb_produtos.getColumnModel().getColumn(7).setPreferredWidth(120);
+        tb_produtos.getColumnModel().getColumn(7).setMaxWidth(120);
+        tb_produtos.getColumnModel().getColumn(7).setMinWidth(120);
+        
+        tb_produtos.getColumnModel().getColumn(8).setPreferredWidth(100);
+        tb_produtos.getColumnModel().getColumn(8).setMaxWidth(100);
+        tb_produtos.getColumnModel().getColumn(8).setMinWidth(100);
+        
+        ProdutosBLL rg = new ProdutosBLL();
+        tb_produtos.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        DefaultTableModel modelo = (DefaultTableModel) tb_produtos.getModel();
+        modelo.setNumRows(0);
+        
+        for(ProdutosDTO pdto:rg.listarProduto()){
+         modelo.addRow(new Object[]{
+                pdto.getId_produto(),
+                pdto.getNome(),
+                pdto.getCor(),
+                pdto.getQuantidade(),
+                pdto.getEspessura(),              
+                pdto.getAltura(),
+                pdto.getLargura(),
+                pdto.getComprimento(),
+                pdto.getValor()
+            });
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -182,13 +240,13 @@ public class Alterar_Produtos extends javax.swing.JFrame {
                 produtosDTO.setCor(txt_cor.getText());
                 produtosDTO.setQuantidade(Integer.parseInt(txt_qntd.getText()));
                 produtosDTO.setEspessura(txt_espessura.getText());
-                produtosDTO.setAltura(Double.parseDouble(txt_altura.getText()));
-                produtosDTO.setLargura(Double.parseDouble(txt_largura.getText()));
-                produtosDTO.setComprimento(Double.parseDouble(txt_comprimento.getText()));
+                produtosDTO.setAltura(txt_altura.getText());
+                produtosDTO.setLargura(txt_largura.getText());
+                produtosDTO.setComprimento(txt_comprimento.getText());
                 produtosDTO.setValor(Double.parseDouble(txt_valor.getText()));
                 rg.alterar(produtosDTO);
                 JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
-                //preencherTabela();
+                preencherTabela();
                 this.dispose();          
         }else{       
             JOptionPane.showMessageDialog(null, "Campos vazios!");                

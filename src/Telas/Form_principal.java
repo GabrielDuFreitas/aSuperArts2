@@ -24,6 +24,8 @@ public class Form_principal extends javax.swing.JFrame {
     Cadastro_Materiais cadastro_Materiais = null;
     Cadastro_Servicos cadastro_Servicos = null;
     Cadastro_Produtos cadastro_Produtos = null;
+    Lista_Usuario lista_Usuario = null;
+    Abrir_OS abrir_OS = null;
     public Form_principal() {
         initComponents();
         setExtendedState(MAXIMIZED_BOTH);
@@ -68,10 +70,10 @@ public class Form_principal extends javax.swing.JFrame {
         jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem12 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenuItemAlterarUsuario = new javax.swing.JMenuItem();
         jMenuItem8 = new javax.swing.JMenuItem();
         menu_op = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenuItemAbirOS = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -196,10 +198,15 @@ public class Form_principal extends javax.swing.JFrame {
         jMenu4.setText("Editar");
         jMenu4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jMenuItem6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jMenuItem6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/Imagens/icons8-usuário-de-gênero-neutro-24.png"))); // NOI18N
-        jMenuItem6.setText("Usuários");
-        jMenu4.add(jMenuItem6);
+        jMenuItemAlterarUsuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jMenuItemAlterarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Telas/Imagens/icons8-usuário-de-gênero-neutro-24.png"))); // NOI18N
+        jMenuItemAlterarUsuario.setText("Usuários");
+        jMenuItemAlterarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlterarUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItemAlterarUsuario);
 
         menu_admin.add(jMenu4);
 
@@ -212,8 +219,13 @@ public class Form_principal extends javax.swing.JFrame {
         menu_op.setText("Operador");
         menu_op.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
-        jMenuItem9.setText("Abrir O.S");
-        menu_op.add(jMenuItem9);
+        jMenuItemAbirOS.setText("Abrir O.S");
+        jMenuItemAbirOS.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAbirOSActionPerformed(evt);
+            }
+        });
+        menu_op.add(jMenuItemAbirOS);
 
         barra_menu.add(menu_op);
 
@@ -255,6 +267,7 @@ public class Form_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuItemLogoutActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        fecharTelas();
         Cadastro_Funcionarios cadastro_Funcionarios = new Cadastro_Funcionarios();
         cadastro_Funcionarios.setVisible(true);
         desktop.add(cadastro_Funcionarios);
@@ -291,6 +304,20 @@ public class Form_principal extends javax.swing.JFrame {
         cadastro_Produtos.setVisible(true);
         desktop.add(cadastro_Produtos);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItemAbirOSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbirOSActionPerformed
+        fecharTelas();
+        abrir_OS = new Abrir_OS();
+        abrir_OS.setVisible(true);
+        desktop.add(abrir_OS);
+    }//GEN-LAST:event_jMenuItemAbirOSActionPerformed
+
+    private void jMenuItemAlterarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlterarUsuarioActionPerformed
+        fecharTelas();
+        lista_Usuario = new Lista_Usuario();
+        lista_Usuario.setVisible(true);
+        desktop.add(lista_Usuario);
+    }//GEN-LAST:event_jMenuItemAlterarUsuarioActionPerformed
     public void fecharTelas(){
     if(cadastro_Clientes != null){
         cadastro_Clientes.setVisible(false);
@@ -311,6 +338,14 @@ public class Form_principal extends javax.swing.JFrame {
     if(cadastro_Produtos != null){
         cadastro_Produtos.setVisible(false);
         cadastro_Produtos = null;
+    }
+    if(abrir_OS != null){
+        abrir_OS.setVisible(false);
+        abrir_OS = null;
+    }
+    if(lista_Usuario != null){
+        lista_Usuario.setVisible(false);
+        lista_Usuario = null;
     }
     }
     /**
@@ -362,10 +397,10 @@ public class Form_principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenuItem jMenuItemAbirOS;
+    private javax.swing.JMenuItem jMenuItemAlterarUsuario;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JMenu menu_admin;
     public static javax.swing.JMenu menu_arquivo;

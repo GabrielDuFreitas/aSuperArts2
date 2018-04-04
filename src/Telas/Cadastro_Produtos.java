@@ -303,9 +303,7 @@ public void preencherTabela(){
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 367, Short.MAX_VALUE))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Editar", jPanel1);
@@ -334,13 +332,21 @@ public void preencherTabela(){
         produtosDTO.setCor(txt_cor.getText());
         produtosDTO.setQuantidade(Integer.parseInt(txt_qntd.getText()));
         produtosDTO.setEspessura(txt_espessura.getText());
-        produtosDTO.setAltura(Double.parseDouble(txt_altura.getText()));
-        produtosDTO.setLargura(Double.parseDouble(txt_largura.getText()));
-        produtosDTO.setComprimento(Double.parseDouble(txt_comprimento.getText()));
+        produtosDTO.setAltura(txt_altura.getText());
+        produtosDTO.setLargura(txt_largura.getText());
+        produtosDTO.setComprimento(txt_comprimento.getText());
         produtosDTO.setValor(Double.parseDouble(txt_valor.getText()));
         rg.inserir(produtosDTO);
         JOptionPane.showMessageDialog(null, "Produto Cadastrado" );
         preencherTabela();
+        txt_nome.setText("");
+        txt_cor.setText("");
+        txt_qntd.setText("");
+        txt_espessura.setText("");
+        txt_altura.setText("");
+        txt_largura.setText("");
+        txt_comprimento.setText("");
+        txt_valor.setText("");
     
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
@@ -451,7 +457,7 @@ public void preencherTabela(){
     private javax.swing.JPopupMenu jPopupMenu1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable tb_produtos;
+    public static javax.swing.JTable tb_produtos;
     private javax.swing.JTextField txt_altura;
     private javax.swing.JTextField txt_cod;
     private javax.swing.JTextField txt_comprimento;

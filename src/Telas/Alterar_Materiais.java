@@ -319,7 +319,7 @@ public class Alterar_Materiais extends javax.swing.JFrame {
      
                     rg.alterar(materiaisDTO);
                     JOptionPane.showMessageDialog(null, "Alterado com sucesso!");
-                   // preencherTabela();
+                    preencherTabela();
                     this.dispose();          
         }else{       
             JOptionPane.showMessageDialog(null, "Campos vazios!");                

@@ -149,13 +149,14 @@ public class Form_Login extends javax.swing.JFrame {
                 if(tipo != 0){
                   
                     if(tipo == 1){
+                    JOptionPane.showMessageDialog(null, "Bem Vindo "+txt_usuario.getText());
                     Form_principal.menu_arquivo.setEnabled(true);
                     Form_principal.menu_admin.setEnabled(true);
                     Form_principal.menu_op.setEnabled(true);
                     this.dispose();
 
                     }else if( tipo == 2){
-                    JOptionPane.showMessageDialog(null, "Bem Vindo, "+txt_usuario.getText());
+                    JOptionPane.showMessageDialog(null, "Bem Vindo "+txt_usuario.getText());
                     Form_principal.menu_arquivo.setEnabled(true);
                     Form_principal.menu_admin.setEnabled(false);
                     Form_principal.menu_op.setEnabled(true);
@@ -222,6 +223,6 @@ public class Form_Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField txt_senha;
-    private javax.swing.JTextField txt_usuario;
+    public static javax.swing.JTextField txt_usuario;
     // End of variables declaration//GEN-END:variables
 }
