@@ -1,6 +1,7 @@
 
 package Telas;
-
+import java.util.Scanner;
+import Valida_cpf.ValidaCPF;
 import BLL.FuncionariosBLL;
 import DTO.FuncionariosDTO;
 import static Telas.Cadastro_Funcionarios.tb_funcoionario;
@@ -116,12 +117,15 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(695, 415));
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Código");
 
         txt_cod.setEnabled(false);
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Nome");
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Cpf");
 
         try {
@@ -129,11 +133,19 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txt_cpf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cpfActionPerformed(evt);
+            }
+        });
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Indentidade");
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Endereço");
 
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setText("Cep");
 
         try {
@@ -142,14 +154,18 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setText("Numero");
 
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("Cidade");
 
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setText("UF");
 
         txt_uf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA", "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO" }));
 
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Telefone");
 
         try {
@@ -158,6 +174,7 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
             ex.printStackTrace();
         }
 
+        btn_cadastar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_cadastar.setText("Alterar");
         btn_cadastar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,7 +269,7 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
                     .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btn_cadastar)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         pack();
@@ -289,10 +306,15 @@ public class Alterar_Funcionarios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_cadastarActionPerformed
 
+    private void txt_cpfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cpfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cpfActionPerformed
     /**
      * @param args the command line arguments
-     */  
+     */ 
+    
     public static void main(String args[]) {
+  
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

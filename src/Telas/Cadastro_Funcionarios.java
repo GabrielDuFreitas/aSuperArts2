@@ -7,9 +7,12 @@ package Telas;
 
 import BLL.FuncionariosBLL;
 import DTO.FuncionariosDTO;
+import Valida_cpf.ValidaCPF;
+import java.util.Scanner;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
@@ -416,9 +419,20 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
         txt_numero.setText("");
         txt_cidade.setText("");
         txt_uf.setSelectedItem("-");
-        txt_telefone.setText("");       
+        txt_telefone.setText("");    
     }//GEN-LAST:event_btn_cadastrarActionPerformed
-
+    public static void main(String[] args) { //Validar CPF
+    /* Scanner ler = new Scanner(System.in);  
+         String txt_cpf;
+         
+         System.out.printf("Informe um CPF: ");
+            txt_cpf = ler.next();
+         System.out.printf("\nResultado: ");
+// usando os metodos isCPF() e imprimeCPF() da classe "ValidaCPF"
+    if (ValidaCPF.isCPF(txt_cpf) == true)
+       System.out.printf("%s\n", ValidaCPF.imprimeCPF(txt_cpf));
+    else System.out.printf("Erro, CPF invalido !!!\n");     */  
+    }
     private void tb_funcoionarioMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tb_funcoionarioMouseReleased
         if(evt.isPopupTrigger()){
             Popuptb_funcionario.show(this, evt.getX(), 105);

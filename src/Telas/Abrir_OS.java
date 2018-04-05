@@ -81,20 +81,25 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("NºOS");
 
         txt_nOS.setEnabled(false);
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Data de Entrada");
 
         txt_dataEntrada.setEnabled(false);
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Empresa");
 
         txt_empresa.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Cliente");
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Telefone");
 
         try {
@@ -103,40 +108,53 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setText("Responsável");
 
         txt_responsavel.setEnabled(false);
 
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("Telefone");
 
         txt_telefoneFunc.setEnabled(false);
 
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setText("Data de Entrega");
 
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Produto");
 
         txt_produto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setText("Quantidade");
 
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Serviço");
 
         txt_servico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel13.setText("Minutos");
 
+        jLabel14.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel14.setText("Material");
 
         txt_material.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-" }));
 
+        jLabel15.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel15.setText("Largura");
 
+        jLabel16.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel16.setText("Altura");
 
+        jLabel17.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel17.setText("Total");
 
+        jLabel18.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel18.setText("Descrição");
 
+        tb_os.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         tb_os.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -147,10 +165,13 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tb_os);
 
+        jLabel19.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel19.setText("Total da OS");
 
+        btn_add.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_add.setText("ADICIONAR");
 
+        btn_remover.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_remover.setText("REMOVER");
         btn_remover.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,8 +179,10 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
             }
         });
 
+        btn_gerarOS.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_gerarOS.setText("GERAR OS");
 
+        btn_imprimir.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_imprimir.setText("IMPRIMIR");
 
         txt_descricao.setColumns(20);
@@ -259,7 +282,7 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txt_telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(66, Short.MAX_VALUE))
+                        .addContainerGap(15, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btn_add)
                         .addGap(18, 18, 18)
@@ -335,7 +358,7 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
                     .addComponent(btn_gerarOS)
                     .addComponent(btn_imprimir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)

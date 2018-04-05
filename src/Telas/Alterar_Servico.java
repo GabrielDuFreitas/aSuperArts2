@@ -77,18 +77,23 @@ public void preencherTabela(){
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Código");
 
         txt_cod.setEnabled(false);
 
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Serviço");
 
         txt_servico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Laser", "Fresa", "Impressão", "Produçao" }));
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Quantidade");
 
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Valor");
 
+        btn_cadastrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_cadastrar.setText("Alterar");
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +141,7 @@ public void preencherTabela(){
                 .addComponent(txt_valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(btn_cadastrar)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();

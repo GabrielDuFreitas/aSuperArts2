@@ -131,13 +131,16 @@ public class Alterar_Materiais extends javax.swing.JFrame {
 
         txt_cod.setEnabled(false);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel2.setText("Nome");
 
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Cor");
 
+        jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Espessura");
 
+        jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setText("Altura");
 
         txt_altura.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -146,6 +149,7 @@ public class Alterar_Materiais extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setText("Largura");
 
         txt_largura.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -154,8 +158,12 @@ public class Alterar_Materiais extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel8.setText("Total cm²");
 
+        txt_totalCm.setEnabled(false);
+
+        jLabel9.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel9.setText("Preço de Compra");
 
         txt_precoCompra.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -164,6 +172,7 @@ public class Alterar_Materiais extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Porcentagem");
 
         txt_porcentagem.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -172,12 +181,22 @@ public class Alterar_Materiais extends javax.swing.JFrame {
             }
         });
 
+        jLabel11.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel11.setText("Total");
 
+        txt_total.setEnabled(false);
+
+        jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Preço de Venda");
 
+        txt_precoVenda.setEnabled(false);
+
+        jLabel13.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel13.setText("Valor cm²");
 
+        txt_valorCm.setEnabled(false);
+
+        btn_cadastrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_cadastrar.setText("Alterar");
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -241,7 +260,7 @@ public class Alterar_Materiais extends javax.swing.JFrame {
                             .addComponent(jLabel13)
                             .addComponent(txt_valorCm, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(btn_cadastrar))
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -286,7 +305,7 @@ public class Alterar_Materiais extends javax.swing.JFrame {
                     .addComponent(txt_valorCm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btn_cadastrar)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         pack();
