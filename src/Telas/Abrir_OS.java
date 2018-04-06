@@ -46,7 +46,6 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
         jLabel8 = new javax.swing.JLabel();
         txt_telefoneFunc = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        txt_dataEntrega = new com.toedter.calendar.JDateChooser();
         jLabel10 = new javax.swing.JLabel();
         txt_produto = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
@@ -271,8 +270,7 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
                                         .addComponent(txt_telefoneFunc, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel9)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(txt_dataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(139, 139, 139)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel18)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -326,7 +324,6 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel8)
                                 .addComponent(txt_telefoneFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel9)
-                            .addComponent(txt_dataEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel18))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -358,7 +355,7 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
                     .addComponent(btn_gerarOS)
                     .addComponent(btn_imprimir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
@@ -420,7 +417,6 @@ public class Abrir_OS extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txt_altura;
     private javax.swing.JTextField txt_cliente;
     private javax.swing.JTextField txt_dataEntrada;
-    private com.toedter.calendar.JDateChooser txt_dataEntrega;
     private javax.swing.JTextArea txt_descricao;
     private javax.swing.JComboBox<String> txt_empresa;
     private javax.swing.JTextField txt_largura;

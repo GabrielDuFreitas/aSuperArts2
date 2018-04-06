@@ -253,6 +253,7 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
         servicosDTO.setQuantidade(Integer.parseInt(txt_qntd.getText()));
         servicosDTO.setValor(Double.parseDouble(txt_valor.getText().replace(",", ".")));
         rg.inserir(servicosDTO);
+        JOptionPane.showMessageDialog(null, "Serviço Cadastrado !" );
         preencherTabela();
         txt_servico.setSelectedItem("-");
         txt_qntd.setText("");
