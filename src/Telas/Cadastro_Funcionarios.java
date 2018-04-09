@@ -173,11 +173,21 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         txt_cpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_cpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cpfKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Indentidade");
 
         txt_identidade.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_identidade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_identidadeKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel5.setText("Endereço");
@@ -188,6 +198,11 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
         jLabel6.setText("Número");
 
         txt_numero.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_numero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_numeroKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setText("Cidade");
@@ -209,6 +224,11 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
             ex.printStackTrace();
         }
         txt_cep.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_cep.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cepKeyTyped(evt);
+            }
+        });
 
         btn_cadastrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_cadastrar.setText("Cadastrar");
@@ -223,6 +243,11 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txt_telefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_telefoneKeyTyped(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Telefone");
@@ -518,6 +543,41 @@ public class Cadastro_Funcionarios extends javax.swing.JInternalFrame {
              }  
         }
     }//GEN-LAST:event_tb_funcoionarioMouseClicked
+
+    private void txt_cpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cpfKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_cpfKeyTyped
+
+    private void txt_cepKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cepKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_cepKeyTyped
+
+    private void txt_telefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefoneKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_telefoneKeyTyped
+
+    private void txt_numeroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_numeroKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_numeroKeyTyped
+
+    private void txt_identidadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_identidadeKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_identidadeKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Editar;

@@ -105,6 +105,10 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel1.setText("Código");
 
@@ -118,8 +122,20 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Quantidade");
 
+        txt_qntd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_qntdKeyTyped(evt);
+            }
+        });
+
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel4.setText("Valor");
+
+        txt_valor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_valorKeyTyped(evt);
+            }
+        });
 
         btn_cadastrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_cadastrar.setText("Cadastrar");
@@ -340,6 +356,20 @@ public class Cadastro_Servicos extends javax.swing.JInternalFrame {
 
              }
     }//GEN-LAST:event_EditarActionPerformed
+
+    private void txt_qntdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_qntdKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_qntdKeyTyped
+
+    private void txt_valorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_valorKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_valorKeyTyped
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem Editar;

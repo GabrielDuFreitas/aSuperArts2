@@ -138,6 +138,10 @@ public void preencherTabela(){
         setIconifiable(true);
         setMaximizable(true);
 
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
         jLabel12.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel12.setText("Código");
 
@@ -154,6 +158,12 @@ public void preencherTabela(){
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cadastrarActionPerformed(evt);
+            }
+        });
+
+        txt_qntd.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_qntdKeyTyped(evt);
             }
         });
 
@@ -447,6 +457,13 @@ public void preencherTabela(){
             
         }
     }//GEN-LAST:event_tb_produtosMouseReleased
+
+    private void txt_qntdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_qntdKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_qntdKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

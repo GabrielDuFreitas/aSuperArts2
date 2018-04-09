@@ -155,6 +155,11 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
 
         txt_cnpj.setToolTipText("Digite o CNPJ");
         txt_cnpj.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_cnpj.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cnpjKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel6.setText("CPF");
@@ -166,6 +171,11 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
         }
         txt_cpf.setToolTipText("Digite seu CPF");
         txt_cpf.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_cpf.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_cpfKeyTyped(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel7.setText("E-mail");
@@ -194,6 +204,11 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
         }
         txt_telefone.setToolTipText("(xx)xxxx-xxxx");
         txt_telefone.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_telefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_telefoneKeyTyped(evt);
+            }
+        });
 
         jLabel10.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel10.setText("Celular");
@@ -205,6 +220,11 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
         }
         txt_celular.setToolTipText("(xx)xxxxx-xxxx");
         txt_celular.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        txt_celular.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_celularKeyTyped(evt);
+            }
+        });
 
         btn_cadastrar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         btn_cadastrar.setText("Cadastrar");
@@ -599,6 +619,34 @@ public class Cadastro_Clientes extends javax.swing.JInternalFrame {
            txt_nome.setBackground(Color.WHITE);
        }
     }//GEN-LAST:event_txt_nomeKeyPressed
+
+    private void txt_cpfKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cpfKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_cpfKeyTyped
+
+    private void txt_telefoneKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefoneKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_telefoneKeyTyped
+
+    private void txt_celularKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_celularKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_celularKeyTyped
+
+    private void txt_cnpjKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cnpjKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_cnpjKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

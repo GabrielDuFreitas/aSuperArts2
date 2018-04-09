@@ -177,6 +177,9 @@ public void preencherTabela(){
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_alturaKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_alturaKeyTyped(evt);
+            }
         });
 
         jLabel4.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -189,6 +192,9 @@ public void preencherTabela(){
         txt_largura.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_larguraKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_larguraKeyTyped(evt);
             }
         });
 
@@ -207,6 +213,9 @@ public void preencherTabela(){
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_precoCompraKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_precoCompraKeyTyped(evt);
+            }
         });
 
         jLabel8.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
@@ -218,6 +227,9 @@ public void preencherTabela(){
         txt_porcentagem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txt_porcentagemKeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_porcentagemKeyTyped(evt);
             }
         });
 
@@ -607,6 +619,34 @@ public void preencherTabela(){
                }
             }
     }//GEN-LAST:event_tb_materialMouseClicked
+
+    private void txt_alturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_alturaKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_alturaKeyTyped
+
+    private void txt_larguraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_larguraKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_larguraKeyTyped
+
+    private void txt_precoCompraKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_precoCompraKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_precoCompraKeyTyped
+
+    private void txt_porcentagemKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_porcentagemKeyTyped
+        String caracteres="0987654321,.";
+        if(!caracteres.contains(evt.getKeyChar()+"")){
+        evt.consume();
+        }
+    }//GEN-LAST:event_txt_porcentagemKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
